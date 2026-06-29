@@ -19,6 +19,7 @@ composer install
 ./bin/php-surface path/to/File.php --help
 ./bin/php-surface path/to/File.php --text
 ./bin/php-surface path/to/File.php --filter save
+./bin/php-surface path/to/File.php --search nested
 ./bin/php-surface path/to/File.php --visibility public
 ./bin/php-surface path/to/File.php --full
 ./bin/php-surface path/to/File.php --show ClassName::method

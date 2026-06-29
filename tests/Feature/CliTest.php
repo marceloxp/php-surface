@@ -132,3 +132,51 @@ describe('output guard', function () {
             ->and($result->stdout)->not->toBe('');
     });
 });
+
+describe('filter', function () {
+    test('drops symbols without matching methods', function () {
+        $result = runPhpSurface([fixture('Monster.php'), '--filter', 'nested']);
+
+        expect($result->exitCode)->toBe(ExitCode::SUCCESS);
+
+        $data = $result->json();
+        expect($data['symbols'])->toHaveCount(1)
+            ->and($data['symbols'][0]['name'])->toBe('ClosureExample')
+            ->and($data['symbols'][0]['methods'])->toHaveCount(1)
+            ->and($data['symbols'][0]['methods'][0]['name'])->toBe('nestedClosure');
+    });
+});
+
+describe('search', function () {
+    test('finds nested constructs in monster fixture', function () {
+        $result = runPhpSurface([fixture('Monster.php'), '--search', 'nested']);
+
+        expect($result->exitCode)->toBe(ExitCode::SUCCESS);
+
+        $data = $result->json();
+        expect($data['query'])->toBe('nested')
+            ->and($data['matches'])->not->toBeEmpty();
+
+        $kinds = array_column($data['matches'], 'kind');
+        expect($kinds)->toContain('symbol', 'method', 'source');
+
+        $symbol = null;
+        foreach ($data['matches'] as $match) {
+            if ($match['kind'] === 'symbol' && $match['name'] === 'NestedConstructsExample') {
+                $symbol = $match;
+                break;
+            }
+        }
+
+        expect($symbol)->not->toBeNull()
+            ->and($symbol['hint'])->toBe('php-surface tests/fixtures/Monster.php --show NestedConstructsExample::complexMethod');
+    });
+
+    test('renders text output', function () {
+        $result = runPhpSurface([fixture('Symbols.php'), '--search', 'read', '--text']);
+
+        expect($result->exitCode)->toBe(ExitCode::SUCCESS)
+            ->and($result->stdout)->toContain('query: read')
+            ->and($result->stdout)->toContain('Readable');
+    });
+});

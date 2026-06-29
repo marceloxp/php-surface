@@ -16,15 +16,21 @@ final class MethodNameFilter
         $filtered = [];
 
         foreach ($symbols as $symbol) {
-            $filteredSymbol = $symbol;
-
-            if (isset($symbol['methods']) && is_array($symbol['methods'])) {
-                $filteredSymbol['methods'] = array_values(array_filter(
-                    $symbol['methods'],
-                    static fn (array $method): bool => str_contains($method['name'], $term)
-                ));
+            if (!isset($symbol['methods']) || !is_array($symbol['methods'])) {
+                continue;
             }
 
+            $methods = array_values(array_filter(
+                $symbol['methods'],
+                static fn (array $method): bool => str_contains($method['name'], $term)
+            ));
+
+            if ($methods === []) {
+                continue;
+            }
+
+            $filteredSymbol = $symbol;
+            $filteredSymbol['methods'] = $methods;
             $filtered[] = $filteredSymbol;
         }
 

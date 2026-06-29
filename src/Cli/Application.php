@@ -6,11 +6,13 @@ namespace PhpSurface\Cli;
 
 use PhpSurface\Analyzer\StatsCollector;
 use PhpSurface\Parser\ParseException;
+use PhpSurface\Extractor\SearchExtractor;
 use PhpSurface\Extractor\ShowExtractor;
 use PhpSurface\Extractor\SymbolExtractor;
 use PhpSurface\Filter\MethodNameFilter;
 use PhpSurface\Filter\VisibilityFilter;
 use PhpSurface\Output\JsonRenderer;
+use PhpSurface\Output\SearchRenderer;
 use PhpSurface\Output\ShowRenderer;
 use PhpSurface\Output\StatsRenderer;
 use PhpSurface\Output\TextRenderer;
@@ -23,9 +25,11 @@ final class Application
         private readonly MethodNameFilter $methodNameFilter = new MethodNameFilter(),
         private readonly VisibilityFilter $visibilityFilter = new VisibilityFilter(),
         private readonly ShowExtractor $showExtractor = new ShowExtractor(),
+        private readonly SearchExtractor $searchExtractor = new SearchExtractor(),
         private readonly JsonRenderer $jsonRenderer = new JsonRenderer(),
         private readonly TextRenderer $textRenderer = new TextRenderer(),
         private readonly ShowRenderer $showRenderer = new ShowRenderer(),
+        private readonly SearchRenderer $searchRenderer = new SearchRenderer(),
         private readonly StatsCollector $statsCollector = new StatsCollector(),
         private readonly StatsRenderer $statsRenderer = new StatsRenderer(),
         private readonly OutputGuard $outputGuard = new OutputGuard(),
@@ -93,6 +97,12 @@ final class Application
             return ExitCode::USAGE;
         }
 
+        $search = $this->resolveOptionValue($args, '--search');
+        if ($this->hasFlag($args, '--search') && ($search === null || $search === '')) {
+            fwrite(STDERR, 'Error: --search requires a value' . PHP_EOL);
+            return ExitCode::USAGE;
+        }
+
         try {
             $symbols = $this->symbolExtractor->extract($file, $this->hasFlag($args, '--full'));
         } catch (ParseException $exception) {
@@ -116,6 +126,22 @@ final class Application
                 : $this->showRenderer->renderJson($file, $matches);
 
             return $this->emitOutput($output, $file, $args, $isText, $symbols, $show);
+        }
+
+        if ($search !== null && $search !== '') {
+            $searchSymbols = $symbols;
+
+            if ($visibility !== null && $visibility !== '') {
+                $searchSymbols = $this->visibilityFilter->apply($searchSymbols, $visibility);
+            }
+
+            $matches = $this->searchExtractor->search($file, $searchSymbols, $search);
+            $isText = $this->hasFlag($args, '--text');
+            $output = $isText
+                ? $this->searchRenderer->renderText($file, $search, $matches)
+                : $this->searchRenderer->renderJson($file, $search, $matches);
+
+            return $this->emitOutput($output, $file, $args, $isText, $symbols);
         }
 
         if ($visibility !== null && $visibility !== '') {
@@ -192,6 +218,7 @@ final class Application
 
         $hints = [
             sprintf('php-surface %s --stats', $file),
+            sprintf('php-surface %s --search <term>', $file),
             sprintf('php-surface %s --visibility public', $file),
         ];
 
@@ -273,7 +300,7 @@ final class Application
                 continue;
             }
 
-            if ($arg === '--filter' || $arg === '--visibility' || $arg === '--show') {
+            if ($arg === '--filter' || $arg === '--visibility' || $arg === '--show' || $arg === '--search') {
                 $skipNext = true;
                 continue;
             }
@@ -339,6 +366,7 @@ Arguments:
 Options:
   --text                Human-readable output instead of JSON
   --filter <name>       Show only methods whose name contains <name> (case-sensitive)
+  --search <term>       Find symbols, methods and source lines (case-insensitive)
   --visibility <level>  Filter by public, protected or private
   --show <symbol>       Extract method body (e.g. save or ClassName::save)
   --stats               Summary counts instead of full symbol map
@@ -354,6 +382,7 @@ Examples:
   php-surface Foo.php
   php-surface Foo.php --text
   php-surface Foo.php --filter save
+  php-surface Foo.php --search nested
   php-surface Foo.php --visibility public
   php-surface Foo.php --show UserRepository::save
   php-surface Foo.php --stats
