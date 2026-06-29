@@ -159,4 +159,11 @@ describe('show output', function () {
         expect($result->exitCode)->toBe(ExitCode::SUCCESS);
         expect($result->json())->toMatchSnapshot();
     });
+
+    test('monster fixture', function () {
+        $result = runPhpSurface([fixture('Monster.php')]);
+
+        expect($result->exitCode)->toBe(ExitCode::SUCCESS);
+        expect($result->json())->toMatchSnapshot();
+    });
 });

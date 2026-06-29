@@ -1,0 +1,2339 @@
+{
+    "file": "tests\/fixtures\/Monster.php",
+    "symbols": [
+        {
+            "name": "TestAttribute",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 18,
+            "methods": [
+                {
+                    "name": "__construct",
+                    "visibility": "public",
+                    "signature": "public function __construct( public string $name = '', public array $options = [], public ?int $priority = null, )",
+                    "startLine": 21,
+                    "endLine": 25
+                }
+            ]
+        },
+        {
+            "name": "Route",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 28,
+            "methods": [
+                {
+                    "name": "__construct",
+                    "visibility": "public",
+                    "signature": "public function __construct( public string $path, public string $method = 'GET', public array $middleware = [], )",
+                    "startLine": 31,
+                    "endLine": 35
+                }
+            ]
+        },
+        {
+            "name": "Inject",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 38,
+            "methods": [
+                {
+                    "name": "__construct",
+                    "visibility": "public",
+                    "signature": "public function __construct( public ?string $id = null, )",
+                    "startLine": 41,
+                    "endLine": 43
+                }
+            ]
+        },
+        {
+            "name": "RepositoryInterface",
+            "namespace": "Surface\\Monster",
+            "type": "interface",
+            "line": 51,
+            "methods": [
+                {
+                    "name": "find",
+                    "visibility": "public",
+                    "signature": "public function find(int $id): ?object",
+                    "startLine": 53,
+                    "endLine": 53,
+                    "returnType": "null|object"
+                },
+                {
+                    "name": "findAll",
+                    "visibility": "public",
+                    "signature": "public function findAll(): array",
+                    "startLine": 54,
+                    "endLine": 54,
+                    "returnType": "array"
+                }
+            ]
+        },
+        {
+            "name": "AdvancedRepositoryInterface",
+            "namespace": "Surface\\Monster",
+            "type": "interface",
+            "line": 57,
+            "methods": [
+                {
+                    "name": "findByCriteria",
+                    "visibility": "public",
+                    "signature": "public function findByCriteria(array $criteria): iterable",
+                    "startLine": 59,
+                    "endLine": 59,
+                    "returnType": "iterable"
+                },
+                {
+                    "name": "count",
+                    "visibility": "public",
+                    "signature": "public function count(): int",
+                    "startLine": 60,
+                    "endLine": 60,
+                    "returnType": "int"
+                }
+            ]
+        },
+        {
+            "name": "CachedRepositoryInterface",
+            "namespace": "Surface\\Monster",
+            "type": "interface",
+            "line": 63,
+            "methods": [
+                {
+                    "name": "clearCache",
+                    "visibility": "public",
+                    "signature": "public function clearCache(): void",
+                    "startLine": 65,
+                    "endLine": 65,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "MapperInterface",
+            "namespace": "Surface\\Monster",
+            "type": "interface",
+            "line": 77,
+            "methods": [
+                {
+                    "name": "map",
+                    "visibility": "public",
+                    "signature": "public function map(mixed $input): mixed",
+                    "startLine": 83,
+                    "endLine": 83,
+                    "returnType": "mixed",
+                    "docblock": {
+                        "return": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "LoggerTrait",
+            "namespace": "Surface\\Monster",
+            "type": "trait",
+            "line": 91,
+            "methods": [
+                {
+                    "name": "log",
+                    "visibility": "public",
+                    "signature": "public function log(string $message, string $level = 'info'): void",
+                    "startLine": 95,
+                    "endLine": 98,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getLogs",
+                    "visibility": "public",
+                    "signature": "abstract public function getLogs(): array",
+                    "startLine": 100,
+                    "endLine": 100,
+                    "returnType": "array",
+                    "modifiers": [
+                        "abstract"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "TimestampableTrait",
+            "namespace": "Surface\\Monster",
+            "type": "trait",
+            "line": 103,
+            "methods": [
+                {
+                    "name": "getCreatedAt",
+                    "visibility": "public",
+                    "signature": "public function getCreatedAt(): ?\\DateTimeImmutable",
+                    "startLine": 108,
+                    "endLine": 111,
+                    "returnType": "null|\\DateTimeImmutable"
+                },
+                {
+                    "name": "getUpdatedAt",
+                    "visibility": "public",
+                    "signature": "public function getUpdatedAt(): ?\\DateTimeImmutable",
+                    "startLine": 113,
+                    "endLine": 116,
+                    "returnType": "null|\\DateTimeImmutable"
+                },
+                {
+                    "name": "updateTimestamp",
+                    "visibility": "public",
+                    "signature": "public function updateTimestamp(): void",
+                    "startLine": 118,
+                    "endLine": 121,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "CacheableTrait",
+            "namespace": "Surface\\Monster",
+            "type": "trait",
+            "line": 124,
+            "methods": [
+                {
+                    "name": "getCache",
+                    "visibility": "public",
+                    "signature": "public function getCache(string $key): mixed",
+                    "startLine": 128,
+                    "endLine": 131,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "setCache",
+                    "visibility": "public",
+                    "signature": "public function setCache(string $key, mixed $value): void",
+                    "startLine": 133,
+                    "endLine": 136,
+                    "returnType": "void"
+                },
+                {
+                    "name": "clearCache",
+                    "visibility": "public",
+                    "signature": "public function clearCache(): void",
+                    "startLine": 138,
+                    "endLine": 141,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "TraitUser",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 149,
+            "methods": [
+                {
+                    "name": "getLogs",
+                    "visibility": "public",
+                    "signature": "public function getLogs(): array",
+                    "startLine": 159,
+                    "endLine": 162,
+                    "returnType": "array"
+                },
+                {
+                    "name": "error",
+                    "visibility": "public",
+                    "signature": "public function error(string $message): void",
+                    "startLine": 164,
+                    "endLine": 167,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "AbstractEntity",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 175,
+            "methods": [
+                {
+                    "name": "__construct",
+                    "visibility": "public",
+                    "signature": "public function __construct()",
+                    "startLine": 197,
+                    "endLine": 201
+                },
+                {
+                    "name": "getId",
+                    "visibility": "public",
+                    "signature": "public function getId(): ?int",
+                    "startLine": 203,
+                    "endLine": 206,
+                    "returnType": "null|int"
+                },
+                {
+                    "name": "save",
+                    "visibility": "public",
+                    "signature": "abstract public function save(): bool",
+                    "startLine": 208,
+                    "endLine": 208,
+                    "returnType": "bool",
+                    "modifiers": [
+                        "abstract"
+                    ]
+                },
+                {
+                    "name": "toArray",
+                    "visibility": "public",
+                    "signature": "abstract public function toArray(): array",
+                    "startLine": 213,
+                    "endLine": 213,
+                    "returnType": "array",
+                    "modifiers": [
+                        "abstract"
+                    ],
+                    "docblock": {
+                        "return": "array<string, mixed>"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "User",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 254,
+            "methods": [
+                {
+                    "name": "__construct",
+                    "visibility": "public",
+                    "signature": "public function __construct( string $name, string $email, #[Inject('age')] ?int $age = null, ?int $id = null, )",
+                    "startLine": 281,
+                    "endLine": 296
+                },
+                {
+                    "name": "find",
+                    "visibility": "public",
+                    "signature": "public function find(int $id): ?object",
+                    "startLine": 298,
+                    "endLine": 301,
+                    "returnType": "null|object"
+                },
+                {
+                    "name": "findAll",
+                    "visibility": "public",
+                    "signature": "public function findAll(): array",
+                    "startLine": 303,
+                    "endLine": 306,
+                    "returnType": "array"
+                },
+                {
+                    "name": "findByCriteria",
+                    "visibility": "public",
+                    "signature": "public function findByCriteria(array $criteria): iterable",
+                    "startLine": 308,
+                    "endLine": 317,
+                    "returnType": "iterable"
+                },
+                {
+                    "name": "count",
+                    "visibility": "public",
+                    "signature": "public function count(): int",
+                    "startLine": 319,
+                    "endLine": 322,
+                    "returnType": "int"
+                },
+                {
+                    "name": "clearCache",
+                    "visibility": "public",
+                    "signature": "public function clearCache(): void",
+                    "startLine": 324,
+                    "endLine": 327,
+                    "returnType": "void"
+                },
+                {
+                    "name": "map",
+                    "visibility": "public",
+                    "signature": "public function map(mixed $input): mixed",
+                    "startLine": 329,
+                    "endLine": 332,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "save",
+                    "visibility": "public",
+                    "signature": "public function save(): bool",
+                    "startLine": 334,
+                    "endLine": 337,
+                    "returnType": "bool"
+                },
+                {
+                    "name": "toArray",
+                    "visibility": "public",
+                    "signature": "public function toArray(): array",
+                    "startLine": 342,
+                    "endLine": 353,
+                    "returnType": "array",
+                    "docblock": {
+                        "return": "array<string, mixed>"
+                    }
+                },
+                {
+                    "name": "getName",
+                    "visibility": "public",
+                    "signature": "public function getName(): string",
+                    "startLine": 355,
+                    "endLine": 358,
+                    "returnType": "string"
+                },
+                {
+                    "name": "setName",
+                    "visibility": "public",
+                    "signature": "public function setName(string $name): void",
+                    "startLine": 360,
+                    "endLine": 363,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getEmail",
+                    "visibility": "public",
+                    "signature": "public function getEmail(): string",
+                    "startLine": 365,
+                    "endLine": 368,
+                    "returnType": "string"
+                },
+                {
+                    "name": "setEmail",
+                    "visibility": "public",
+                    "signature": "public function setEmail(string $email): void",
+                    "startLine": 370,
+                    "endLine": 373,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getAge",
+                    "visibility": "public",
+                    "signature": "public function getAge(): ?int",
+                    "startLine": 375,
+                    "endLine": 378,
+                    "returnType": "null|int"
+                },
+                {
+                    "name": "setAge",
+                    "visibility": "public",
+                    "signature": "public function setAge(?int $age): void",
+                    "startLine": 380,
+                    "endLine": 383,
+                    "returnType": "void"
+                },
+                {
+                    "name": "isActive",
+                    "visibility": "public",
+                    "signature": "public function isActive(): bool",
+                    "startLine": 385,
+                    "endLine": 388,
+                    "returnType": "bool"
+                },
+                {
+                    "name": "setActive",
+                    "visibility": "public",
+                    "signature": "public function setActive(bool $active): void",
+                    "startLine": 390,
+                    "endLine": 393,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getStatus",
+                    "visibility": "public",
+                    "signature": "public function getStatus(): Status",
+                    "startLine": 395,
+                    "endLine": 398,
+                    "returnType": "\\Surface\\Monster\\Status"
+                },
+                {
+                    "name": "setStatus",
+                    "visibility": "public",
+                    "signature": "public function setStatus(Status $status): void",
+                    "startLine": 400,
+                    "endLine": 403,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getCounts",
+                    "visibility": "public",
+                    "signature": "public function getCounts(): array",
+                    "startLine": 408,
+                    "endLine": 411,
+                    "returnType": "array",
+                    "docblock": {
+                        "return": "non-empty-array<string, int>"
+                    }
+                },
+                {
+                    "name": "__toString",
+                    "visibility": "public",
+                    "signature": "public function __toString(): string",
+                    "startLine": 413,
+                    "endLine": 416,
+                    "returnType": "string"
+                }
+            ]
+        },
+        {
+            "name": "LoggerInterface",
+            "namespace": "Surface\\Monster",
+            "type": "interface",
+            "line": 424,
+            "methods": [
+                {
+                    "name": "log",
+                    "visibility": "public",
+                    "signature": "public function log(string $message): void",
+                    "startLine": 426,
+                    "endLine": 426,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "SerializableInterface",
+            "namespace": "Surface\\Monster",
+            "type": "interface",
+            "line": 429,
+            "methods": [
+                {
+                    "name": "serialize",
+                    "visibility": "public",
+                    "signature": "public function serialize(): string",
+                    "startLine": 431,
+                    "endLine": 431,
+                    "returnType": "string"
+                }
+            ]
+        },
+        {
+            "name": "ComplexTypeExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 434,
+            "methods": [
+                {
+                    "name": "__construct",
+                    "visibility": "public",
+                    "signature": "public function __construct( string|int $id, LoggerInterface&SerializableInterface $logger, private ?Closure $callback = null )",
+                    "startLine": 445,
+                    "endLine": 452
+                },
+                {
+                    "name": "getId",
+                    "visibility": "public",
+                    "signature": "public function getId(): string|int",
+                    "startLine": 455,
+                    "endLine": 458,
+                    "returnType": "string|int"
+                },
+                {
+                    "name": "processData",
+                    "visibility": "public",
+                    "signature": "public function processData(): void",
+                    "startLine": 461,
+                    "endLine": 466,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "AnonymousClassContainer",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 474,
+            "methods": [
+                {
+                    "name": "createAnonymousObject",
+                    "visibility": "public",
+                    "signature": "public function createAnonymousObject(): object",
+                    "startLine": 476,
+                    "endLine": 496,
+                    "returnType": "object"
+                },
+                {
+                    "name": "createExtendedAnonymous",
+                    "visibility": "public",
+                    "signature": "public function createExtendedAnonymous(): object",
+                    "startLine": 498,
+                    "endLine": 519,
+                    "returnType": "object"
+                },
+                {
+                    "name": "createAnonymousWithTrait",
+                    "visibility": "public",
+                    "signature": "public function createAnonymousWithTrait(): object",
+                    "startLine": 521,
+                    "endLine": 531,
+                    "returnType": "object"
+                }
+            ]
+        },
+        {
+            "name": "GeneratorExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 539,
+            "methods": [
+                {
+                    "name": "generateNumbers",
+                    "visibility": "public",
+                    "signature": "public function generateNumbers(int $start, int $end): Generator",
+                    "startLine": 544,
+                    "endLine": 549,
+                    "returnType": "\\Generator",
+                    "docblock": {
+                        "summary": "Gera uma sequ\u00eancia de n\u00fameros de $start at\u00e9 $end."
+                    }
+                },
+                {
+                    "name": "generateKeyValue",
+                    "visibility": "public",
+                    "signature": "public function generateKeyValue(): Generator",
+                    "startLine": 554,
+                    "endLine": 560,
+                    "returnType": "\\Generator",
+                    "docblock": {
+                        "summary": "Gera pares de chave\/valor baseados em um array."
+                    }
+                },
+                {
+                    "name": "generateWithYieldFrom",
+                    "visibility": "public",
+                    "signature": "public function generateWithYieldFrom(): Generator",
+                    "startLine": 565,
+                    "endLine": 569,
+                    "returnType": "\\Generator",
+                    "docblock": {
+                        "summary": "Exemplo de delega\u00e7\u00e3o de generator usando yield from."
+                    }
+                },
+                {
+                    "name": "generateInfinite",
+                    "visibility": "public",
+                    "signature": "public function generateInfinite(): Generator",
+                    "startLine": 574,
+                    "endLine": 580,
+                    "returnType": "\\Generator",
+                    "docblock": {
+                        "summary": "Gera um fluxo infinito de n\u00fameros."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ClosureExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 588,
+            "methods": [
+                {
+                    "name": "createClosure",
+                    "visibility": "public",
+                    "signature": "public function createClosure(): Closure",
+                    "startLine": 590,
+                    "endLine": 596,
+                    "returnType": "\\Closure"
+                },
+                {
+                    "name": "createArrowFunction",
+                    "visibility": "public",
+                    "signature": "public function createArrowFunction(): Closure",
+                    "startLine": 598,
+                    "endLine": 602,
+                    "returnType": "\\Closure"
+                },
+                {
+                    "name": "processArray",
+                    "visibility": "public",
+                    "signature": "public function processArray(array $items): array",
+                    "startLine": 604,
+                    "endLine": 613,
+                    "returnType": "array"
+                },
+                {
+                    "name": "nestedClosure",
+                    "visibility": "public",
+                    "signature": "public function nestedClosure(): Closure",
+                    "startLine": 615,
+                    "endLine": 622,
+                    "returnType": "\\Closure"
+                }
+            ]
+        },
+        {
+            "name": "ComplexMethodExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 630,
+            "methods": [
+                {
+                    "name": "findUsers",
+                    "visibility": "public",
+                    "signature": "public function findUsers( string|int $id, array $options = [], ?callable $filter = null, ?User $context = null, &$reference = null, ...$extra ): array",
+                    "startLine": 640,
+                    "endLine": 658,
+                    "returnType": "array",
+                    "docblock": {
+                        "return": "list<User>",
+                        "throws": [
+                            "InvalidArgumentException",
+                            "RuntimeException"
+                        ]
+                    }
+                },
+                {
+                    "name": "someCondition",
+                    "visibility": "private",
+                    "signature": "private function someCondition(): bool",
+                    "startLine": 660,
+                    "endLine": 663,
+                    "returnType": "bool"
+                },
+                {
+                    "name": "neverReturns",
+                    "visibility": "public",
+                    "signature": "public function neverReturns(): never",
+                    "startLine": 665,
+                    "endLine": 668,
+                    "returnType": "never"
+                },
+                {
+                    "name": "voidMethod",
+                    "visibility": "public",
+                    "signature": "public function voidMethod(): void",
+                    "startLine": 670,
+                    "endLine": 673,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getCollection",
+                    "visibility": "public",
+                    "signature": "public function getCollection(): iterable",
+                    "startLine": 678,
+                    "endLine": 688,
+                    "returnType": "iterable",
+                    "docblock": {
+                        "return": "Collection<int, User>"
+                    }
+                },
+                {
+                    "name": "convertToArray",
+                    "visibility": "public",
+                    "signature": "public function convertToArray(array $users): array",
+                    "startLine": 694,
+                    "endLine": 697,
+                    "returnType": "array",
+                    "docblock": {
+                        "return": "list<User>"
+                    }
+                },
+                {
+                    "name": "createInstance",
+                    "visibility": "public",
+                    "signature": "public function createInstance(string $className): object",
+                    "startLine": 703,
+                    "endLine": 706,
+                    "returnType": "object",
+                    "docblock": {
+                        "return": "User"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "MagicMethodsExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 714,
+            "methods": [
+                {
+                    "name": "__call",
+                    "visibility": "public",
+                    "signature": "public function __call(string $name, array $arguments): mixed",
+                    "startLine": 718,
+                    "endLine": 732,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "__get",
+                    "visibility": "public",
+                    "signature": "public function __get(string $name): mixed",
+                    "startLine": 734,
+                    "endLine": 737,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "__set",
+                    "visibility": "public",
+                    "signature": "public function __set(string $name, mixed $value): void",
+                    "startLine": 739,
+                    "endLine": 742,
+                    "returnType": "void"
+                },
+                {
+                    "name": "__isset",
+                    "visibility": "public",
+                    "signature": "public function __isset(string $name): bool",
+                    "startLine": 744,
+                    "endLine": 747,
+                    "returnType": "bool"
+                },
+                {
+                    "name": "__unset",
+                    "visibility": "public",
+                    "signature": "public function __unset(string $name): void",
+                    "startLine": 749,
+                    "endLine": 752,
+                    "returnType": "void"
+                },
+                {
+                    "name": "__invoke",
+                    "visibility": "public",
+                    "signature": "public function __invoke(...$args): mixed",
+                    "startLine": 754,
+                    "endLine": 757,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "__debugInfo",
+                    "visibility": "public",
+                    "signature": "public function __debugInfo(): array",
+                    "startLine": 759,
+                    "endLine": 762,
+                    "returnType": "array"
+                },
+                {
+                    "name": "__clone",
+                    "visibility": "public",
+                    "signature": "public function __clone(): void",
+                    "startLine": 764,
+                    "endLine": 767,
+                    "returnType": "void"
+                },
+                {
+                    "name": "__sleep",
+                    "visibility": "public",
+                    "signature": "public function __sleep(): array",
+                    "startLine": 769,
+                    "endLine": 772,
+                    "returnType": "array"
+                },
+                {
+                    "name": "__wakeup",
+                    "visibility": "public",
+                    "signature": "public function __wakeup(): void",
+                    "startLine": 774,
+                    "endLine": 777,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "LargeMethodExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 785,
+            "methods": [
+                {
+                    "name": "largeMethodWithComplexControlFlow",
+                    "visibility": "public",
+                    "signature": "public function largeMethodWithComplexControlFlow( array $data, ?array $filters = null, string $sortBy = 'id', string $sortOrder = 'ASC', int $limit = 100, int $offset = 0 ): array",
+                    "startLine": 787,
+                    "endLine": 904,
+                    "returnType": "array"
+                }
+            ]
+        },
+        {
+            "name": "HugeMethodExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 912,
+            "methods": [
+                {
+                    "name": "processConfiguration",
+                    "visibility": "public",
+                    "signature": "public function processConfiguration( array $config, array $requiredFields = [], array $defaults = [], ?callable $validator = null, bool $strict = true ): array",
+                    "startLine": 921,
+                    "endLine": 1095,
+                    "returnType": "array",
+                    "docblock": {
+                        "return": "array<string, mixed>",
+                        "throws": [
+                            "InvalidArgumentException",
+                            "RuntimeException"
+                        ]
+                    }
+                },
+                {
+                    "name": "processDataWithLoops",
+                    "visibility": "public",
+                    "signature": "public function processDataWithLoops(array $items, array $config = []): array",
+                    "startLine": 1100,
+                    "endLine": 1193,
+                    "returnType": "array",
+                    "docblock": {
+                        "summary": "Third large method for line count testing (~150 lines)"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ShortMethodExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1201,
+            "methods": [
+                {
+                    "name": "add",
+                    "visibility": "public",
+                    "signature": "public function add(int $a, int $b): int",
+                    "startLine": 1203,
+                    "endLine": 1206,
+                    "returnType": "int"
+                },
+                {
+                    "name": "multiply",
+                    "visibility": "public",
+                    "signature": "public function multiply(int $a, int $b): int",
+                    "startLine": 1208,
+                    "endLine": 1211,
+                    "returnType": "int"
+                },
+                {
+                    "name": "isEven",
+                    "visibility": "public",
+                    "signature": "public function isEven(int $n): bool",
+                    "startLine": 1213,
+                    "endLine": 1216,
+                    "returnType": "bool"
+                },
+                {
+                    "name": "getStatus",
+                    "visibility": "public",
+                    "signature": "public function getStatus(): string",
+                    "startLine": 1218,
+                    "endLine": 1221,
+                    "returnType": "string"
+                },
+                {
+                    "name": "clear",
+                    "visibility": "public",
+                    "signature": "public function clear(): void",
+                    "startLine": 1223,
+                    "endLine": 1226,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getDefault",
+                    "visibility": "public",
+                    "signature": "public function getDefault(): ?string",
+                    "startLine": 1228,
+                    "endLine": 1231,
+                    "returnType": "null|string"
+                },
+                {
+                    "name": "getList",
+                    "visibility": "public",
+                    "signature": "public function getList(): array",
+                    "startLine": 1233,
+                    "endLine": 1236,
+                    "returnType": "array"
+                },
+                {
+                    "name": "exists",
+                    "visibility": "public",
+                    "signature": "public function exists(string $key): bool",
+                    "startLine": 1238,
+                    "endLine": 1241,
+                    "returnType": "bool"
+                },
+                {
+                    "name": "get",
+                    "visibility": "public",
+                    "signature": "public function get(string $key, mixed $default = null): mixed",
+                    "startLine": 1243,
+                    "endLine": 1246,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "has",
+                    "visibility": "public",
+                    "signature": "public function has(string $key): bool",
+                    "startLine": 1248,
+                    "endLine": 1251,
+                    "returnType": "bool"
+                }
+            ]
+        },
+        {
+            "name": "ControlFlowExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1259,
+            "methods": [
+                {
+                    "name": "demonstrateControlFlow",
+                    "visibility": "public",
+                    "signature": "public function demonstrateControlFlow(int $value, array $items): void",
+                    "startLine": 1263,
+                    "endLine": 1374,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "ExpressionsExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1382,
+            "methods": [
+                {
+                    "name": "demonstrateExpressions",
+                    "visibility": "public",
+                    "signature": "public function demonstrateExpressions(): void",
+                    "startLine": 1387,
+                    "endLine": 1445,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getName",
+                    "visibility": "private",
+                    "signature": "private function getName(): ?self",
+                    "startLine": 1447,
+                    "endLine": 1450,
+                    "returnType": "null|self"
+                },
+                {
+                    "name": "getLength",
+                    "visibility": "private",
+                    "signature": "private function getLength(): int",
+                    "startLine": 1452,
+                    "endLine": 1455,
+                    "returnType": "int"
+                }
+            ]
+        },
+        {
+            "name": "NamedArgumentsExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1463,
+            "methods": [
+                {
+                    "name": "namedArgumentsExample",
+                    "visibility": "public",
+                    "signature": "#[TestAttribute( name: 'example', options: ['key' => 'value', 'count' => 42], priority: 100 )] public function namedArgumentsExample( #[Inject(id: 'service')] object $service, array $config = [], int $limit = 10, ): void",
+                    "startLine": 1465,
+                    "endLine": 1482,
+                    "returnType": "void"
+                },
+                {
+                    "name": "processData",
+                    "visibility": "private",
+                    "signature": "private function processData(array $data, int $limit, int $offset): void",
+                    "startLine": 1484,
+                    "endLine": 1487,
+                    "returnType": "void"
+                },
+                {
+                    "name": "multipleAttributes",
+                    "visibility": "public",
+                    "signature": "#[Route(path: '\/api\/example', method: 'POST', middleware: ['auth', 'csrf'])] #[TestAttribute('multiple', ['a' => 1, 'b' => 2])] public function multipleAttributes(): void",
+                    "startLine": 1489,
+                    "endLine": 1494,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "StaticExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1502,
+            "methods": [
+                {
+                    "name": "create",
+                    "visibility": "public",
+                    "signature": "public static function create(): self",
+                    "startLine": 1508,
+                    "endLine": 1512,
+                    "returnType": "self",
+                    "modifiers": [
+                        "static"
+                    ]
+                },
+                {
+                    "name": "getInstances",
+                    "visibility": "public",
+                    "signature": "public static function getInstances(): array",
+                    "startLine": 1514,
+                    "endLine": 1517,
+                    "returnType": "array",
+                    "modifiers": [
+                        "static"
+                    ]
+                },
+                {
+                    "name": "setDefaultName",
+                    "visibility": "public",
+                    "signature": "public static function setDefaultName(?string $name): void",
+                    "startLine": 1519,
+                    "endLine": 1522,
+                    "returnType": "void",
+                    "modifiers": [
+                        "static"
+                    ]
+                },
+                {
+                    "name": "getDefaultName",
+                    "visibility": "public",
+                    "signature": "public static function getDefaultName(): ?string",
+                    "startLine": 1524,
+                    "endLine": 1527,
+                    "returnType": "null|string",
+                    "modifiers": [
+                        "static"
+                    ]
+                },
+                {
+                    "name": "reset",
+                    "visibility": "public",
+                    "signature": "public static function reset(): void",
+                    "startLine": 1529,
+                    "endLine": 1533,
+                    "returnType": "void",
+                    "modifiers": [
+                        "static"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "AbstractWithFinal",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1541,
+            "methods": [
+                {
+                    "name": "doSomething",
+                    "visibility": "protected",
+                    "signature": "abstract protected function doSomething(): void",
+                    "startLine": 1543,
+                    "endLine": 1543,
+                    "returnType": "void",
+                    "modifiers": [
+                        "abstract"
+                    ]
+                },
+                {
+                    "name": "finalMethod",
+                    "visibility": "public",
+                    "signature": "final public function finalMethod(): void",
+                    "startLine": 1545,
+                    "endLine": 1548,
+                    "returnType": "void",
+                    "modifiers": [
+                        "final"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "FinalClass",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1551,
+            "methods": [
+                {
+                    "name": "doSomething",
+                    "visibility": "protected",
+                    "signature": "protected function doSomething(): void",
+                    "startLine": 1553,
+                    "endLine": 1556,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "A",
+            "namespace": "Surface\\Monster",
+            "type": "interface",
+            "line": 1564,
+            "methods": [
+                {
+                    "name": "methodA",
+                    "visibility": "public",
+                    "signature": "public function methodA(): void",
+                    "startLine": 1566,
+                    "endLine": 1566,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "B",
+            "namespace": "Surface\\Monster",
+            "type": "interface",
+            "line": 1569,
+            "methods": [
+                {
+                    "name": "methodB",
+                    "visibility": "public",
+                    "signature": "public function methodB(): void",
+                    "startLine": 1571,
+                    "endLine": 1571,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "C",
+            "namespace": "Surface\\Monster",
+            "type": "interface",
+            "line": 1574,
+            "methods": [
+                {
+                    "name": "methodC",
+                    "visibility": "public",
+                    "signature": "public function methodC(): void",
+                    "startLine": 1576,
+                    "endLine": 1576,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "TraitA",
+            "namespace": "Surface\\Monster",
+            "type": "trait",
+            "line": 1579,
+            "methods": [
+                {
+                    "name": "methodA",
+                    "visibility": "public",
+                    "signature": "public function methodA(): void",
+                    "startLine": 1581,
+                    "endLine": 1584,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "TraitB",
+            "namespace": "Surface\\Monster",
+            "type": "trait",
+            "line": 1587,
+            "methods": [
+                {
+                    "name": "methodB",
+                    "visibility": "public",
+                    "signature": "public function methodB(): void",
+                    "startLine": 1589,
+                    "endLine": 1592,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "TraitC",
+            "namespace": "Surface\\Monster",
+            "type": "trait",
+            "line": 1595,
+            "methods": [
+                {
+                    "name": "methodC",
+                    "visibility": "public",
+                    "signature": "public function methodC(): void",
+                    "startLine": 1599,
+                    "endLine": 1602,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "MultipleInheritance",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1605,
+            "methods": [
+                {
+                    "name": "methodA",
+                    "visibility": "public",
+                    "signature": "public function methodA(): void",
+                    "startLine": 1612,
+                    "endLine": 1615,
+                    "returnType": "void"
+                },
+                {
+                    "name": "methodC",
+                    "visibility": "public",
+                    "signature": "public function methodC(): void",
+                    "startLine": 1617,
+                    "endLine": 1620,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "TypeDeclarationExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1628,
+            "methods": [
+                {
+                    "name": "__construct",
+                    "visibility": "public",
+                    "signature": "public function __construct()",
+                    "startLine": 1642,
+                    "endLine": 1645
+                },
+                {
+                    "name": "process",
+                    "visibility": "public",
+                    "signature": "public function process(array $items): array",
+                    "startLine": 1647,
+                    "endLine": 1650,
+                    "returnType": "array"
+                },
+                {
+                    "name": "processMixed",
+                    "visibility": "public",
+                    "signature": "public function processMixed(mixed $input): mixed",
+                    "startLine": 1652,
+                    "endLine": 1658,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "processIterable",
+                    "visibility": "public",
+                    "signature": "public function processIterable(iterable $input): iterable",
+                    "startLine": 1660,
+                    "endLine": 1665,
+                    "returnType": "iterable"
+                },
+                {
+                    "name": "processNullable",
+                    "visibility": "public",
+                    "signature": "public function processNullable(?int $number): ?int",
+                    "startLine": 1667,
+                    "endLine": 1670,
+                    "returnType": "null|int"
+                },
+                {
+                    "name": "getObject",
+                    "visibility": "public",
+                    "signature": "public function getObject(): object",
+                    "startLine": 1672,
+                    "endLine": 1675,
+                    "returnType": "object"
+                },
+                {
+                    "name": "setObject",
+                    "visibility": "public",
+                    "signature": "public function setObject(object $object): void",
+                    "startLine": 1677,
+                    "endLine": 1680,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getClosure",
+                    "visibility": "public",
+                    "signature": "public function getClosure(): ?\\Closure",
+                    "startLine": 1682,
+                    "endLine": 1685,
+                    "returnType": "null|\\Closure"
+                },
+                {
+                    "name": "setClosure",
+                    "visibility": "public",
+                    "signature": "public function setClosure(\\Closure $closure): void",
+                    "startLine": 1687,
+                    "endLine": 1690,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "ConstructorPromotionExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1698,
+            "methods": [
+                {
+                    "name": "__construct",
+                    "visibility": "public",
+                    "signature": "public function __construct( public string $name, #[TestAttribute('email')] public readonly string $email, protected ?int $age = null, private array $options = [], readonly private string $hash = '', public readonly bool $active = true, public ?\\DateTimeImmutable $createdAt = null, )",
+                    "startLine": 1700,
+                    "endLine": 1712
+                },
+                {
+                    "name": "getAge",
+                    "visibility": "public",
+                    "signature": "public function getAge(): ?int",
+                    "startLine": 1714,
+                    "endLine": 1717,
+                    "returnType": "null|int"
+                },
+                {
+                    "name": "getOptions",
+                    "visibility": "public",
+                    "signature": "public function getOptions(): array",
+                    "startLine": 1719,
+                    "endLine": 1722,
+                    "returnType": "array"
+                }
+            ]
+        },
+        {
+            "name": "ConstantsExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1730,
+            "methods": [
+                {
+                    "name": "useConstants",
+                    "visibility": "public",
+                    "signature": "public function useConstants(): void",
+                    "startLine": 1752,
+                    "endLine": 1759,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "NestedConstructsExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1767,
+            "methods": [
+                {
+                    "name": "complexMethod",
+                    "visibility": "public",
+                    "signature": "public function complexMethod(): array",
+                    "startLine": 1769,
+                    "endLine": 1830,
+                    "returnType": "array"
+                },
+                {
+                    "name": "getFactory",
+                    "visibility": "public",
+                    "signature": "public function getFactory(): Closure",
+                    "startLine": 1832,
+                    "endLine": 1847,
+                    "returnType": "\\Closure"
+                }
+            ]
+        },
+        {
+            "name": "GenericCollection",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 1862,
+            "methods": [
+                {
+                    "name": "__construct",
+                    "visibility": "public",
+                    "signature": "public function __construct(array $items = [])",
+                    "startLine": 1872,
+                    "endLine": 1875
+                },
+                {
+                    "name": "set",
+                    "visibility": "public",
+                    "signature": "public function set(mixed $key, mixed $value): void",
+                    "startLine": 1881,
+                    "endLine": 1884,
+                    "returnType": "void"
+                },
+                {
+                    "name": "get",
+                    "visibility": "public",
+                    "signature": "public function get(mixed $key): mixed",
+                    "startLine": 1890,
+                    "endLine": 1893,
+                    "returnType": "mixed",
+                    "docblock": {
+                        "return": "TValue|null"
+                    }
+                },
+                {
+                    "name": "getIterator",
+                    "visibility": "public",
+                    "signature": "public function getIterator(): \\Traversable",
+                    "startLine": 1898,
+                    "endLine": 1901,
+                    "returnType": "\\Traversable",
+                    "docblock": {
+                        "return": "Traversable<TKey, TValue>"
+                    }
+                },
+                {
+                    "name": "count",
+                    "visibility": "public",
+                    "signature": "public function count(): int",
+                    "startLine": 1906,
+                    "endLine": 1909,
+                    "returnType": "int",
+                    "docblock": {
+                        "return": "int<0, max>"
+                    }
+                },
+                {
+                    "name": "filter",
+                    "visibility": "public",
+                    "signature": "public function filter(callable $callback): self",
+                    "startLine": 1915,
+                    "endLine": 1919,
+                    "returnType": "self",
+                    "docblock": {
+                        "return": "self<TKey, TValue>"
+                    }
+                },
+                {
+                    "name": "map",
+                    "visibility": "public",
+                    "signature": "public function map(callable $callback): self",
+                    "startLine": 1926,
+                    "endLine": 1933,
+                    "returnType": "self",
+                    "docblock": {
+                        "return": "self<TKey, TNewValue>"
+                    }
+                },
+                {
+                    "name": "values",
+                    "visibility": "public",
+                    "signature": "public function values(): array",
+                    "startLine": 1938,
+                    "endLine": 1941,
+                    "returnType": "array",
+                    "docblock": {
+                        "return": "list<TValue>"
+                    }
+                },
+                {
+                    "name": "keys",
+                    "visibility": "public",
+                    "signature": "public function keys(): array",
+                    "startLine": 1946,
+                    "endLine": 1949,
+                    "returnType": "array",
+                    "docblock": {
+                        "return": "list<TKey>"
+                    }
+                },
+                {
+                    "name": "contains",
+                    "visibility": "public",
+                    "signature": "public function contains(mixed $value): bool",
+                    "startLine": 1955,
+                    "endLine": 1958,
+                    "returnType": "bool",
+                    "docblock": {
+                        "return": "bool"
+                    }
+                },
+                {
+                    "name": "has",
+                    "visibility": "public",
+                    "signature": "public function has(mixed $key): bool",
+                    "startLine": 1964,
+                    "endLine": 1967,
+                    "returnType": "bool",
+                    "docblock": {
+                        "return": "bool"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "RepositoryWithDefaults",
+            "namespace": "Surface\\Monster",
+            "type": "interface",
+            "line": 1993,
+            "methods": [
+                {
+                    "name": "findOrDefault",
+                    "visibility": "public",
+                    "signature": "public function findOrDefault(mixed $id, mixed $default): mixed",
+                    "startLine": 2000,
+                    "endLine": 2000,
+                    "returnType": "mixed",
+                    "docblock": {
+                        "return": "TValue|TDefault"
+                    }
+                },
+                {
+                    "name": "where",
+                    "visibility": "public",
+                    "signature": "public function where(callable $predicate): self",
+                    "startLine": 2006,
+                    "endLine": 2006,
+                    "returnType": "self",
+                    "docblock": {
+                        "return": "self<TKey, TValue>"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ReferenceExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2014,
+            "methods": [
+                {
+                    "name": "getByReference",
+                    "visibility": "public",
+                    "signature": "public function &getByReference(string $key): mixed",
+                    "startLine": 2018,
+                    "endLine": 2021,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "setValue",
+                    "visibility": "public",
+                    "signature": "public function setValue(string $key, &$value): void",
+                    "startLine": 2023,
+                    "endLine": 2026,
+                    "returnType": "void"
+                },
+                {
+                    "name": "increment",
+                    "visibility": "public",
+                    "signature": "public function increment(&$value): void",
+                    "startLine": 2028,
+                    "endLine": 2031,
+                    "returnType": "void"
+                },
+                {
+                    "name": "swap",
+                    "visibility": "public",
+                    "signature": "public function swap(&$a, &$b): void",
+                    "startLine": 2033,
+                    "endLine": 2038,
+                    "returnType": "void"
+                },
+                {
+                    "name": "processReferences",
+                    "visibility": "public",
+                    "signature": "public function processReferences(array &$array, &$result): void",
+                    "startLine": 2040,
+                    "endLine": 2048,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getData",
+                    "visibility": "public",
+                    "signature": "public function getData(): array",
+                    "startLine": 2050,
+                    "endLine": 2053,
+                    "returnType": "array"
+                }
+            ]
+        },
+        {
+            "name": "VariadicExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2061,
+            "methods": [
+                {
+                    "name": "sum",
+                    "visibility": "public",
+                    "signature": "public function sum(int ...$numbers): int",
+                    "startLine": 2063,
+                    "endLine": 2066,
+                    "returnType": "int"
+                },
+                {
+                    "name": "concat",
+                    "visibility": "public",
+                    "signature": "public function concat(string ...$parts): string",
+                    "startLine": 2068,
+                    "endLine": 2071,
+                    "returnType": "string"
+                },
+                {
+                    "name": "merge",
+                    "visibility": "public",
+                    "signature": "public function merge(array ...$arrays): array",
+                    "startLine": 2073,
+                    "endLine": 2076,
+                    "returnType": "array"
+                },
+                {
+                    "name": "combine",
+                    "visibility": "public",
+                    "signature": "public function combine(string $prefix, string ...$items): array",
+                    "startLine": 2078,
+                    "endLine": 2085,
+                    "returnType": "array"
+                },
+                {
+                    "name": "processVariadic",
+                    "visibility": "public",
+                    "signature": "public function processVariadic( string $name, int $id, ...$options ): array",
+                    "startLine": 2087,
+                    "endLine": 2097,
+                    "returnType": "array"
+                },
+                {
+                    "name": "callVariadic",
+                    "visibility": "public",
+                    "signature": "public function callVariadic(): void",
+                    "startLine": 2099,
+                    "endLine": 2109,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "ThrowExpressionExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2117,
+            "methods": [
+                {
+                    "name": "processValue",
+                    "visibility": "public",
+                    "signature": "public function processValue($value): int",
+                    "startLine": 2119,
+                    "endLine": 2126,
+                    "returnType": "int"
+                },
+                {
+                    "name": "getValue",
+                    "visibility": "public",
+                    "signature": "public function getValue($input): int",
+                    "startLine": 2128,
+                    "endLine": 2131,
+                    "returnType": "int"
+                },
+                {
+                    "name": "processArray",
+                    "visibility": "public",
+                    "signature": "public function processArray(array $data): array",
+                    "startLine": 2133,
+                    "endLine": 2139,
+                    "returnType": "array"
+                }
+            ]
+        },
+        {
+            "name": "BaseClass",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2147
+        },
+        {
+            "name": "ReturnTypeExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2150,
+            "methods": [
+                {
+                    "name": "getSelf",
+                    "visibility": "public",
+                    "signature": "public function getSelf(): self",
+                    "startLine": 2152,
+                    "endLine": 2155,
+                    "returnType": "self"
+                },
+                {
+                    "name": "getStatic",
+                    "visibility": "public",
+                    "signature": "public function getStatic(): static",
+                    "startLine": 2157,
+                    "endLine": 2160,
+                    "returnType": "static"
+                },
+                {
+                    "name": "getParent",
+                    "visibility": "public",
+                    "signature": "public function getParent(): parent",
+                    "startLine": 2162,
+                    "endLine": 2166,
+                    "returnType": "parent"
+                },
+                {
+                    "name": "getMixed",
+                    "visibility": "public",
+                    "signature": "public function getMixed(): mixed",
+                    "startLine": 2168,
+                    "endLine": 2171,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "getNever",
+                    "visibility": "public",
+                    "signature": "public function getNever(): never",
+                    "startLine": 2173,
+                    "endLine": 2176,
+                    "returnType": "never"
+                },
+                {
+                    "name": "getVoid",
+                    "visibility": "public",
+                    "signature": "public function getVoid(): void",
+                    "startLine": 2178,
+                    "endLine": 2181,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getGenerator",
+                    "visibility": "public",
+                    "signature": "public function getGenerator(): Generator",
+                    "startLine": 2183,
+                    "endLine": 2186,
+                    "returnType": "\\Generator"
+                },
+                {
+                    "name": "getIterable",
+                    "visibility": "public",
+                    "signature": "public function getIterable(): iterable",
+                    "startLine": 2188,
+                    "endLine": 2191,
+                    "returnType": "iterable"
+                }
+            ]
+        },
+        {
+            "name": "AttributeWithConstants",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2199,
+            "methods": [
+                {
+                    "name": "attributedMethod",
+                    "visibility": "public",
+                    "signature": "#[Route( path: '\/api\/' . ConstantsExample::PUBLIC_CONST, method: 'POST', middleware: ['auth', ConstantsExample::PUBLIC_CONST] )] public function attributedMethod(): void",
+                    "startLine": 2206,
+                    "endLine": 2214,
+                    "returnType": "void"
+                },
+                {
+                    "name": "complexAttribute",
+                    "visibility": "public",
+                    "signature": "#[TestAttribute( name: 'complex', options: [ 'a' => 1, 'b' => ConstantsExample::INTEGER_CONST, 'c' => __DIR__, 'd' => __FILE__, 'e' => __LINE__, 'f' => __CLASS__, 'g' => __METHOD__, 'h' => __FUNCTION__, 'i' => __NAMESPACE__, ] )] public function complexAttribute(): void",
+                    "startLine": 2216,
+                    "endLine": 2233,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "ConstantInterface",
+            "namespace": "Surface\\Monster",
+            "type": "interface",
+            "line": 2241
+        },
+        {
+            "name": "ImplementsConstants",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2248,
+            "methods": [
+                {
+                    "name": "getConstant",
+                    "visibility": "public",
+                    "signature": "public function getConstant(): string",
+                    "startLine": 2250,
+                    "endLine": 2253,
+                    "returnType": "string"
+                },
+                {
+                    "name": "getMaxSize",
+                    "visibility": "public",
+                    "signature": "public function getMaxSize(): int",
+                    "startLine": 2255,
+                    "endLine": 2258,
+                    "returnType": "int"
+                }
+            ]
+        },
+        {
+            "name": "DynamicPropertiesExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2266,
+            "methods": [
+                {
+                    "name": "__set",
+                    "visibility": "public",
+                    "signature": "public function __set(string $name, mixed $value): void",
+                    "startLine": 2270,
+                    "endLine": 2273,
+                    "returnType": "void"
+                },
+                {
+                    "name": "__get",
+                    "visibility": "public",
+                    "signature": "public function __get(string $name): mixed",
+                    "startLine": 2275,
+                    "endLine": 2278,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "__isset",
+                    "visibility": "public",
+                    "signature": "public function __isset(string $name): bool",
+                    "startLine": 2280,
+                    "endLine": 2283,
+                    "returnType": "bool"
+                },
+                {
+                    "name": "__unset",
+                    "visibility": "public",
+                    "signature": "public function __unset(string $name): void",
+                    "startLine": 2285,
+                    "endLine": 2288,
+                    "returnType": "void"
+                },
+                {
+                    "name": "setData",
+                    "visibility": "public",
+                    "signature": "public function setData(string $key, mixed $value): void",
+                    "startLine": 2290,
+                    "endLine": 2293,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getData",
+                    "visibility": "public",
+                    "signature": "public function getData(string $key): mixed",
+                    "startLine": 2295,
+                    "endLine": 2298,
+                    "returnType": "mixed"
+                }
+            ]
+        },
+        {
+            "name": "AbstractWithConstants",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2306,
+            "methods": [
+                {
+                    "name": "getName",
+                    "visibility": "public",
+                    "signature": "abstract public function getName(): string",
+                    "startLine": 2309,
+                    "endLine": 2309,
+                    "returnType": "string",
+                    "modifiers": [
+                        "abstract"
+                    ]
+                },
+                {
+                    "name": "getVersion",
+                    "visibility": "public",
+                    "signature": "abstract public function getVersion(): int",
+                    "startLine": 2310,
+                    "endLine": 2310,
+                    "returnType": "int",
+                    "modifiers": [
+                        "abstract"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "ConcreteMonster",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2313,
+            "methods": [
+                {
+                    "name": "getName",
+                    "visibility": "public",
+                    "signature": "public function getName(): string",
+                    "startLine": 2315,
+                    "endLine": 2318,
+                    "returnType": "string"
+                },
+                {
+                    "name": "getVersion",
+                    "visibility": "public",
+                    "signature": "public function getVersion(): int",
+                    "startLine": 2320,
+                    "endLine": 2323,
+                    "returnType": "int"
+                }
+            ]
+        },
+        {
+            "name": "PropertyTrait",
+            "namespace": "Surface\\Monster",
+            "type": "trait",
+            "line": 2331,
+            "methods": [
+                {
+                    "name": "getPublicProperty",
+                    "visibility": "public",
+                    "signature": "public function getPublicProperty(): string",
+                    "startLine": 2337,
+                    "endLine": 2340,
+                    "returnType": "string"
+                },
+                {
+                    "name": "setPublicProperty",
+                    "visibility": "public",
+                    "signature": "public function setPublicProperty(string $value): void",
+                    "startLine": 2342,
+                    "endLine": 2345,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getProtectedProperty",
+                    "visibility": "protected",
+                    "signature": "protected function getProtectedProperty(): int",
+                    "startLine": 2347,
+                    "endLine": 2350,
+                    "returnType": "int"
+                },
+                {
+                    "name": "setProtectedProperty",
+                    "visibility": "protected",
+                    "signature": "protected function setProtectedProperty(int $value): void",
+                    "startLine": 2352,
+                    "endLine": 2355,
+                    "returnType": "void"
+                },
+                {
+                    "name": "getPrivateProperty",
+                    "visibility": "private",
+                    "signature": "private function getPrivateProperty(): array",
+                    "startLine": 2357,
+                    "endLine": 2360,
+                    "returnType": "array"
+                },
+                {
+                    "name": "setPrivateProperty",
+                    "visibility": "private",
+                    "signature": "private function setPrivateProperty(array $value): void",
+                    "startLine": 2362,
+                    "endLine": 2365,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "StaticPropertyTrait",
+            "namespace": "Surface\\Monster",
+            "type": "trait",
+            "line": 2368,
+            "methods": [
+                {
+                    "name": "getStaticProperty",
+                    "visibility": "public",
+                    "signature": "public static function getStaticProperty(): string",
+                    "startLine": 2372,
+                    "endLine": 2375,
+                    "returnType": "string",
+                    "modifiers": [
+                        "static"
+                    ]
+                },
+                {
+                    "name": "setStaticProperty",
+                    "visibility": "public",
+                    "signature": "public static function setStaticProperty(string $value): void",
+                    "startLine": 2377,
+                    "endLine": 2380,
+                    "returnType": "void",
+                    "modifiers": [
+                        "static"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "TraitPropertyUser",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2383,
+            "methods": [
+                {
+                    "name": "test",
+                    "visibility": "public",
+                    "signature": "public function test(): void",
+                    "startLine": 2387,
+                    "endLine": 2396,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "MixedTypesExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2404,
+            "methods": [
+                {
+                    "name": "process",
+                    "visibility": "public",
+                    "signature": "public function process(mixed $input): mixed",
+                    "startLine": 2406,
+                    "endLine": 2418,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "handle",
+                    "visibility": "public",
+                    "signature": "public function handle(mixed ...$args): mixed",
+                    "startLine": 2420,
+                    "endLine": 2426,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "getMixedOrNull",
+                    "visibility": "public",
+                    "signature": "public function getMixedOrNull(): mixed",
+                    "startLine": 2428,
+                    "endLine": 2431,
+                    "returnType": "mixed"
+                },
+                {
+                    "name": "acceptMixedArray",
+                    "visibility": "public",
+                    "signature": "public function acceptMixedArray(array $items): mixed",
+                    "startLine": 2433,
+                    "endLine": 2436,
+                    "returnType": "mixed"
+                }
+            ]
+        },
+        {
+            "name": "AttributeUnpackExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2444,
+            "methods": [
+                {
+                    "name": "handle",
+                    "visibility": "public",
+                    "signature": "#[Route( path: '\/api\/example', method: 'POST', middleware: [...['auth', 'csrf'], 'cors'] )] public function handle(): void",
+                    "startLine": 2453,
+                    "endLine": 2462,
+                    "returnType": "void"
+                }
+            ]
+        },
+        {
+            "name": "ComprehensivePhpDocExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2491,
+            "methods": [
+                {
+                    "name": "__construct",
+                    "visibility": "public",
+                    "signature": "public function __construct(string $name, ?int $id = null)",
+                    "startLine": 2514,
+                    "endLine": 2518,
+                    "docblock": {
+                        "summary": "Constructor"
+                    }
+                },
+                {
+                    "name": "getId",
+                    "visibility": "public",
+                    "signature": "public function getId(): ?int",
+                    "startLine": 2525,
+                    "endLine": 2528,
+                    "returnType": "null|int",
+                    "docblock": {
+                        "summary": "Get the ID",
+                        "return": "int|null The ID or null if not set"
+                    }
+                },
+                {
+                    "name": "setId",
+                    "visibility": "public",
+                    "signature": "public function setId(?int $id): self",
+                    "startLine": 2536,
+                    "endLine": 2540,
+                    "returnType": "self",
+                    "docblock": {
+                        "summary": "Set the ID",
+                        "return": "self"
+                    }
+                },
+                {
+                    "name": "getName",
+                    "visibility": "public",
+                    "signature": "public function getName(): string",
+                    "startLine": 2547,
+                    "endLine": 2550,
+                    "returnType": "string",
+                    "docblock": {
+                        "summary": "Get the name",
+                        "return": "string The name"
+                    }
+                },
+                {
+                    "name": "setName",
+                    "visibility": "public",
+                    "signature": "public function setName(string $name): self",
+                    "startLine": 2558,
+                    "endLine": 2562,
+                    "returnType": "self",
+                    "docblock": {
+                        "summary": "Set the name",
+                        "return": "self"
+                    }
+                },
+                {
+                    "name": "getTags",
+                    "visibility": "public",
+                    "signature": "public function getTags(): array",
+                    "startLine": 2569,
+                    "endLine": 2572,
+                    "returnType": "array",
+                    "docblock": {
+                        "summary": "Get tags",
+                        "return": "array<int, string> List of tags"
+                    }
+                },
+                {
+                    "name": "setTags",
+                    "visibility": "public",
+                    "signature": "public function setTags(array $tags): self",
+                    "startLine": 2580,
+                    "endLine": 2584,
+                    "returnType": "self",
+                    "docblock": {
+                        "summary": "Set tags",
+                        "return": "self"
+                    }
+                },
+                {
+                    "name": "addTag",
+                    "visibility": "public",
+                    "signature": "public function addTag(string $tag): self",
+                    "startLine": 2593,
+                    "endLine": 2600,
+                    "returnType": "self",
+                    "docblock": {
+                        "summary": "Add a tag",
+                        "return": "self",
+                        "throws": [
+                            "InvalidArgumentException If tag is empty"
+                        ]
+                    }
+                },
+                {
+                    "name": "process",
+                    "visibility": "public",
+                    "signature": "public function process(callable $validator, array $options = []): array",
+                    "startLine": 2610,
+                    "endLine": 2616,
+                    "returnType": "array",
+                    "docblock": {
+                        "summary": "Process the entity",
+                        "return": "array{success: bool, data: mixed}",
+                        "throws": [
+                            "RuntimeException If processing fails"
+                        ]
+                    }
+                },
+                {
+                    "name": "toArray",
+                    "visibility": "public",
+                    "signature": "public function toArray(): array",
+                    "startLine": 2627,
+                    "endLine": 2634,
+                    "returnType": "array",
+                    "docblock": {
+                        "summary": "Convert to array",
+                        "return": "array{id: int|null, name: string, tags: array<int, string>}"
+                    }
+                },
+                {
+                    "name": "clone",
+                    "visibility": "public",
+                    "signature": "public function clone(): static",
+                    "startLine": 2641,
+                    "endLine": 2644,
+                    "returnType": "static",
+                    "docblock": {
+                        "summary": "Create a clone",
+                        "return": "static"
+                    }
+                },
+                {
+                    "name": "__toString",
+                    "visibility": "public",
+                    "signature": "public function __toString(): string",
+                    "startLine": 2651,
+                    "endLine": 2654,
+                    "returnType": "string",
+                    "docblock": {
+                        "summary": "Magical toString",
+                        "return": "string"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "FileLevelTestClass",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "line": 2662,
+            "methods": [
+                {
+                    "name": "__construct",
+                    "visibility": "private",
+                    "signature": "private function __construct()",
+                    "startLine": 2666,
+                    "endLine": 2669
+                },
+                {
+                    "name": "getInstance",
+                    "visibility": "public",
+                    "signature": "public static function getInstance(): self",
+                    "startLine": 2671,
+                    "endLine": 2677,
+                    "returnType": "self",
+                    "modifiers": [
+                        "static"
+                    ]
+                },
+                {
+                    "name": "testAnonymousClass",
+                    "visibility": "public",
+                    "signature": "public function testAnonymousClass(): object",
+                    "startLine": 2679,
+                    "endLine": 2699,
+                    "returnType": "object"
+                },
+                {
+                    "name": "testClosure",
+                    "visibility": "public",
+                    "signature": "public function testClosure(): Closure",
+                    "startLine": 2701,
+                    "endLine": 2706,
+                    "returnType": "\\Closure"
+                },
+                {
+                    "name": "testArrowFunction",
+                    "visibility": "public",
+                    "signature": "public function testArrowFunction(): Closure",
+                    "startLine": 2708,
+                    "endLine": 2711,
+                    "returnType": "\\Closure"
+                },
+                {
+                    "name": "testGenerator",
+                    "visibility": "public",
+                    "signature": "public function testGenerator(): Generator",
+                    "startLine": 2713,
+                    "endLine": 2718,
+                    "returnType": "\\Generator"
+                }
+            ]
+        }
+    ]
+}
