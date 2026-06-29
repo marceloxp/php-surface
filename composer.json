@@ -12,13 +12,25 @@
             "PhpSurface\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "bin": [
         "bin/php-surface"
     ],
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "scripts": {
-        "lint": "phpcs --standard=PSR12 -p -s src"
+        "lint": "phpcs --standard=PSR12 -p -s src",
+        "test": "pest"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.36"
     }
 }

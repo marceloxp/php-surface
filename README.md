@@ -41,10 +41,14 @@ PHP_SURFACE_BIN_PATH=/usr/bin/php8.3 ./bin/php-surface File.php
 | `1` | Usage error (missing argument, invalid flag, symbol not found) |
 | `2` | File error (missing file, invalid extension, parse error) |
 
-## Manual tests
+## Tests
 
 ```bash
-./tests.sh
+composer test
 ```
 
-`tests.sh` is local-only (gitignored) and accumulates acceptance checks per roadmap phase.
+Or directly:
+
+```bash
+./vendor/bin/pest
+```
