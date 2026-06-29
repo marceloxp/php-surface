@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PhpSurface\Cli;
 
 use PhpSurface\Extractor\SymbolExtractor;
+use PhpSurface\Filter\MethodNameFilter;
 use PhpSurface\Output\JsonRenderer;
 use PhpSurface\Output\TextRenderer;
 use PhpSurface\Version;
@@ -13,6 +14,7 @@ final class Application
 {
     public function __construct(
         private readonly SymbolExtractor $symbolExtractor = new SymbolExtractor(),
+        private readonly MethodNameFilter $methodNameFilter = new MethodNameFilter(),
         private readonly JsonRenderer $jsonRenderer = new JsonRenderer(),
         private readonly TextRenderer $textRenderer = new TextRenderer(),
     ) {
@@ -52,11 +54,21 @@ final class Application
             return ExitCode::FILE_ERROR;
         }
 
+        $filter = $this->resolveOptionValue($args, '--filter');
+        if ($this->hasFlag($args, '--filter') && ($filter === null || $filter === '')) {
+            fwrite(STDERR, 'Error: --filter requires a value' . PHP_EOL);
+            return ExitCode::USAGE;
+        }
+
         try {
             $symbols = $this->symbolExtractor->extract($file);
         } catch (\Throwable $exception) {
             fwrite(STDERR, 'Error: failed to parse file: ' . $exception->getMessage() . PHP_EOL);
             return ExitCode::FILE_ERROR;
+        }
+
+        if ($filter !== null && $filter !== '') {
+            $symbols = $this->methodNameFilter->apply($symbols, $filter);
         }
 
         if ($this->hasFlag($args, '--text')) {
@@ -110,6 +122,25 @@ final class Application
         return null;
     }
 
+    /**
+     * @param list<string> $args
+     */
+    private function resolveOptionValue(array $args, string $option): ?string
+    {
+        foreach ($args as $index => $arg) {
+            if ($arg === $option) {
+                return $args[$index + 1] ?? null;
+            }
+
+            $prefix = $option . '=';
+            if (str_starts_with($arg, $prefix)) {
+                return substr($arg, strlen($prefix));
+            }
+        }
+
+        return null;
+    }
+
     private function validateFile(string $file): ?string
     {
         if (!str_ends_with(strtolower($file), '.php')) {
@@ -141,7 +172,7 @@ Arguments:
 
 Options:
   --text                Human-readable output instead of JSON
-  --filter <name>       Show only methods whose name matches
+  --filter <name>       Show only methods whose name contains <name> (case-sensitive)
   --visibility <level>  Filter by public, protected or private
   --show <symbol>       Extract method body (e.g. save or ClassName::save)
   --full                Include structured parameters and full docblocks

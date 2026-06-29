@@ -17,10 +17,10 @@
 
 **Critérios de aceite:**
 
-- [ ] Saída não é JSON (stdout legível)
-- [ ] Todos os símbolos e métodos das fixtures aparecem
-- [ ] Assinaturas conferem com o fonte
-- [ ] Método documentado mostra resumo; indocumentado não mostra bloco vazio
-- [ ] `--text` sem argumento extra funciona igual com arquivo válido
+- [x] Saída não é JSON (stdout legível)
+- [x] Todos os símbolos e métodos das fixtures aparecem
+- [x] Assinaturas conferem com o fonte
+- [x] Método documentado mostra resumo; indocumentado não mostra bloco vazio
+- [x] `--text` sem argumento extra funciona igual com arquivo válido
 
 **Próxima fase bloqueada até:** todos os itens passarem.
