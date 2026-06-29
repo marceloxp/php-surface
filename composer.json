@@ -17,5 +17,8 @@
     ],
     "config": {
         "sort-packages": true
+    },
+    "scripts": {
+        "lint": "phpcs --standard=PSR12 -p -s src"
     }
 }
