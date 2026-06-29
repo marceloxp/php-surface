@@ -4,7 +4,7 @@ Structural explorer for PHP source files. Outputs a compact map of classes, trai
 
 ## Requirements
 
-- PHP 8.1+
+- PHP 8.3+
 
 ## Install
 
@@ -25,7 +25,7 @@ composer install
 
 ## Runtime PHP
 
-By default, `bin/php-surface` uses the first compatible PHP 8.1+ binary in your `PATH`.
+By default, `bin/php-surface` uses the first compatible PHP 8.3+ binary in your `PATH`.
 
 Override with:
 

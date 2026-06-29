@@ -13,21 +13,21 @@ resolve_php() {
         local version
         version="$(php -r 'echo PHP_MAJOR_VERSION.".".PHP_MINOR_VERSION;' 2>/dev/null || true)"
         case "$version" in
-            8.1|8.2|8.3|8.4|8.5)
+            8.3|8.4|8.5)
                 echo php
                 return
                 ;;
         esac
     fi
 
-    for candidate in php8.5 php8.4 php8.3 php8.2 php8.1; do
+    for candidate in php8.5 php8.4 php8.3; do
         if command -v "$candidate" >/dev/null 2>&1; then
             echo "$candidate"
             return
         fi
     done
 
-    echo 'php-surface requires PHP 8.1 or newer (set PHP_SURFACE_BIN_PATH).' >&2
+    echo 'php-surface requires PHP 8.3 or newer (set PHP_SURFACE_BIN_PATH).' >&2
     exit 1
 }
 

@@ -276,7 +276,7 @@ The JSON structure is considered the public interface of the tool.
 
 # Runtime
 
-`php-surface` requires PHP 8.1+ to execute.
+`php-surface` requires PHP 8.3+ to execute.
 
 The analyzed project may target any PHP version supported by the parser.
 

@@ -4,7 +4,7 @@
 
 **Entrega:**
 
-* `composer.json` com PHP `^8.1` e autoload PSR-4
+* `composer.json` com PHP `^8.3` e autoload PSR-4
 * `bin/php-surface` executável
 * `--help` e `--version`
 * Erro claro quando o arquivo não existe ou não é legível
