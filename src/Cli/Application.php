@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PhpSurface\Cli;
 
+use PhpSurface\Analyzer\StatsCollector;
 use PhpSurface\Parser\ParseException;
 use PhpSurface\Extractor\ShowExtractor;
 use PhpSurface\Extractor\SymbolExtractor;
@@ -11,6 +12,7 @@ use PhpSurface\Filter\MethodNameFilter;
 use PhpSurface\Filter\VisibilityFilter;
 use PhpSurface\Output\JsonRenderer;
 use PhpSurface\Output\ShowRenderer;
+use PhpSurface\Output\StatsRenderer;
 use PhpSurface\Output\TextRenderer;
 use PhpSurface\Version;
 
@@ -24,6 +26,8 @@ final class Application
         private readonly JsonRenderer $jsonRenderer = new JsonRenderer(),
         private readonly TextRenderer $textRenderer = new TextRenderer(),
         private readonly ShowRenderer $showRenderer = new ShowRenderer(),
+        private readonly StatsCollector $statsCollector = new StatsCollector(),
+        private readonly StatsRenderer $statsRenderer = new StatsRenderer(),
     ) {
     }
     /**
@@ -119,6 +123,18 @@ final class Application
 
         if ($filter !== null && $filter !== '') {
             $symbols = $this->methodNameFilter->apply($symbols, $filter);
+        }
+
+        if ($this->hasFlag($args, '--stats')) {
+            $stats = $this->statsCollector->collect($file, $symbols);
+
+            if ($this->hasFlag($args, '--text')) {
+                fwrite(STDOUT, $this->statsRenderer->renderText($stats));
+            } else {
+                fwrite(STDOUT, $this->statsRenderer->renderJson($stats));
+            }
+
+            return ExitCode::SUCCESS;
         }
 
         if ($this->hasFlag($args, '--text')) {
@@ -225,6 +241,7 @@ Options:
   --filter <name>       Show only methods whose name contains <name> (case-sensitive)
   --visibility <level>  Filter by public, protected or private
   --show <symbol>       Extract method body (e.g. save or ClassName::save)
+  --stats               Summary counts instead of full symbol map
   --full                Include structured parameters and full docblocks
   -h, --help            Show this help message
   -V, --version         Show version information
@@ -235,6 +252,7 @@ Examples:
   php-surface Foo.php --filter save
   php-surface Foo.php --visibility public
   php-surface Foo.php --show UserRepository::save
+  php-surface Foo.php --stats
   php-surface Foo.php --full
 
 HELP;

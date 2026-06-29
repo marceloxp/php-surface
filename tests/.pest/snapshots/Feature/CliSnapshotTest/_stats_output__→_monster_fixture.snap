@@ -1,0 +1,94 @@
+{
+    "file": "tests\/fixtures\/Monster.php",
+    "bytes": 70431,
+    "lines": 2726,
+    "symbols": {
+        "total": 61,
+        "byType": {
+            "class": 42,
+            "interface": 11,
+            "trait": 8
+        }
+    },
+    "methods": {
+        "total": 210,
+        "byVisibility": {
+            "public": 199,
+            "protected": 4,
+            "private": 7
+        },
+        "withDocblock": 37
+    },
+    "largest": [
+        {
+            "name": "User",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "methods": 21,
+            "line": 254
+        },
+        {
+            "name": "ComprehensivePhpDocExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "methods": 12,
+            "line": 2491
+        },
+        {
+            "name": "GenericCollection",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "methods": 11,
+            "line": 1862
+        },
+        {
+            "name": "MagicMethodsExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "methods": 10,
+            "line": 714
+        },
+        {
+            "name": "ShortMethodExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "methods": 10,
+            "line": 1201
+        },
+        {
+            "name": "TypeDeclarationExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "methods": 9,
+            "line": 1628
+        },
+        {
+            "name": "ReturnTypeExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "methods": 8,
+            "line": 2150
+        },
+        {
+            "name": "ComplexMethodExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "methods": 7,
+            "line": 630
+        },
+        {
+            "name": "DynamicPropertiesExample",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "methods": 6,
+            "line": 2266
+        },
+        {
+            "name": "FileLevelTestClass",
+            "namespace": "Surface\\Monster",
+            "type": "class",
+            "methods": 6,
+            "line": 2662
+        }
+    ]
+}

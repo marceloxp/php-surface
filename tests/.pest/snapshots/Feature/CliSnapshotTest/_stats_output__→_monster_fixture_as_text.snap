@@ -1,0 +1,18 @@
+tests/fixtures/Monster.php
+70431 bytes, 2726 lines
+
+Symbols: 61 (42 classes, 11 interfaces, 8 traits)
+Methods: 210 (199 public, 4 protected, 7 private)
+Docblocks: 37 methods with summary
+
+Largest by methods:
+  class Surface\Monster\User — 21 methods (line 254)
+  class Surface\Monster\ComprehensivePhpDocExample — 12 methods (line 2491)
+  class Surface\Monster\GenericCollection — 11 methods (line 1862)
+  class Surface\Monster\MagicMethodsExample — 10 methods (line 714)
+  class Surface\Monster\ShortMethodExample — 10 methods (line 1201)
+  class Surface\Monster\TypeDeclarationExample — 9 methods (line 1628)
+  class Surface\Monster\ReturnTypeExample — 8 methods (line 2150)
+  class Surface\Monster\ComplexMethodExample — 7 methods (line 630)
+  class Surface\Monster\DynamicPropertiesExample — 6 methods (line 2266)
+  class Surface\Monster\FileLevelTestClass — 6 methods (line 2662)

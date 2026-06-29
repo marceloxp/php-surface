@@ -16,11 +16,13 @@ composer install
 
 ```bash
 ./bin/php-surface path/to/File.php
+./bin/php-surface path/to/File.php --help
 ./bin/php-surface path/to/File.php --text
 ./bin/php-surface path/to/File.php --filter save
 ./bin/php-surface path/to/File.php --visibility public
 ./bin/php-surface path/to/File.php --full
 ./bin/php-surface path/to/File.php --show ClassName::method
+./bin/php-surface path/to/File.php --stats
 ```
 
 ## Runtime PHP
