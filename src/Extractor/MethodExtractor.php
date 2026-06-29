@@ -12,6 +12,7 @@ final class MethodExtractor
 {
     public function __construct(
         private readonly MethodAstIndex $methodAstIndex = new MethodAstIndex(),
+        private readonly DocblockExtractor $docblockExtractor = new DocblockExtractor(),
     ) {
     }
 
@@ -43,15 +44,16 @@ final class MethodExtractor
 
     /**
      * @param list<string> $sourceLines
-     * @param array<int, array{endLine: int, isAbstract: bool}> $astIndex
+     * @param array<int, array{endLine: int, isAbstract: bool, docComment: string|null}> $astIndex
      *
      * @return array<string, mixed>
      */
     private function mapMethod(PHPMethod $method, array $sourceLines, array $astIndex): array
     {
         $startLine = $method->line ?? 0;
-        $endLine = $astIndex[$startLine]['endLine'] ?? $startLine;
-        $isAbstract = $astIndex[$startLine]['isAbstract'] ?? false;
+        $methodMeta = $astIndex[$startLine] ?? null;
+        $endLine = $methodMeta['endLine'] ?? $startLine;
+        $isAbstract = $methodMeta['isAbstract'] ?? false;
 
         $mapped = [
             'name' => $method->name,
@@ -68,6 +70,12 @@ final class MethodExtractor
         $modifiers = $this->collectModifiers($method, $isAbstract);
         if ($modifiers !== []) {
             $mapped['modifiers'] = $modifiers;
+        }
+
+        $docComment = $methodMeta !== null ? $methodMeta['docComment'] : null;
+        $docblock = $this->docblockExtractor->extract($method, $docComment);
+        if ($docblock !== null) {
+            $mapped['docblock'] = $docblock;
         }
 
         return $mapped;

@@ -36,12 +36,12 @@ class OrderService
 
 **Critérios de aceite:**
 
-- [ ] `save`: `visibility` public, `signature` completa, `returnType` `void`, linhas corretas, **sem** `modifiers`, **sem** `docblock`
-- [ ] `findActive`: `modifiers` = `["static"]` apenas (não lista `final`/`abstract` como false)
-- [ ] `lock`: `modifiers` contém `final` (e `static` se aplicável)
-- [ ] Método sem return type declarado → chave `returnType` **ausente**
-- [ ] `startLine`/`endLine` batem com o arquivo fonte (abrir o arquivo e conferir)
-- [ ] Nenhum método tem chave `docblock` nem `parameters`
-- [ ] Duas execuções → JSON idêntico
+- [x] `save`: `visibility` public, `signature` completa, `returnType` `void`, linhas corretas, **sem** `modifiers`, **sem** `docblock`
+- [x] `findActive`: `modifiers` = `["static"]` apenas (não lista `final`/`abstract` como false)
+- [x] `lock`: `modifiers` contém `final` (e `static` se aplicável)
+- [x] Método sem return type declarado → chave `returnType` **ausente**
+- [x] `startLine`/`endLine` batem com o arquivo fonte (abrir o arquivo e conferir)
+- [x] Nenhum método tem chave `docblock` nem `parameters`
+- [x] Duas execuções → JSON idêntico
 
 **Próxima fase bloqueada até:** todos os itens passarem.

@@ -13,7 +13,7 @@ use PhpParser\ParserFactory;
 final class MethodAstIndex
 {
     /**
-     * @return array<int, array{endLine: int, isAbstract: bool}>
+     * @return array<int, array{endLine: int, isAbstract: bool, docComment: string|null}>
      */
     public function index(string $filePath): array
     {
@@ -32,7 +32,7 @@ final class MethodAstIndex
         $traverser = new NodeTraverser();
         $traverser->addVisitor(new class ($index) extends NodeVisitorAbstract {
             /**
-             * @param array<int, array{endLine: int, isAbstract: bool}> $index
+             * @param array<int, array{endLine: int, isAbstract: bool, docComment: string|null}> $index
              */
             public function __construct(private array &$index)
             {
@@ -48,6 +48,7 @@ final class MethodAstIndex
                 $this->index[$startLine] = [
                     'endLine' => $node->getEndLine(),
                     'isAbstract' => $node->isAbstract(),
+                    'docComment' => $node->getDocComment()?->getText(),
                 ];
             }
         });
