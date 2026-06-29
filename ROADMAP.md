@@ -39,7 +39,7 @@ Funcionalidades **fora do escopo** atual — só após MVP validado:
 | 3 — Métodos lean   | ✅ aprovada | 2026-06-29 |       |
 | 4 — Docblocks      | ✅ aprovada | 2026-06-29 |       |
 | 5 — `--text`       | ✅ aprovada | 2026-06-29 |       |
-| 6 — `--filter`     | ⬜ pendente |      |       |
+| 6 — `--filter`     | ✅ aprovada | 2026-06-29 |       |
 | 7 — `--visibility` | ⬜ pendente |      |       |
 | 8 — `--full`       | ⬜ pendente |      |       |
 | 9 — `--show`       | ⬜ pendente |      |       |

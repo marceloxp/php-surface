@@ -6,6 +6,7 @@ namespace PhpSurface\Cli;
 
 use PhpSurface\Extractor\SymbolExtractor;
 use PhpSurface\Filter\MethodNameFilter;
+use PhpSurface\Filter\VisibilityFilter;
 use PhpSurface\Output\JsonRenderer;
 use PhpSurface\Output\TextRenderer;
 use PhpSurface\Version;
@@ -15,6 +16,7 @@ final class Application
     public function __construct(
         private readonly SymbolExtractor $symbolExtractor = new SymbolExtractor(),
         private readonly MethodNameFilter $methodNameFilter = new MethodNameFilter(),
+        private readonly VisibilityFilter $visibilityFilter = new VisibilityFilter(),
         private readonly JsonRenderer $jsonRenderer = new JsonRenderer(),
         private readonly TextRenderer $textRenderer = new TextRenderer(),
     ) {
@@ -60,11 +62,29 @@ final class Application
             return ExitCode::USAGE;
         }
 
+        $visibility = $this->resolveOptionValue($args, '--visibility');
+        if ($this->hasFlag($args, '--visibility') && ($visibility === null || $visibility === '')) {
+            fwrite(STDERR, 'Error: --visibility requires a value' . PHP_EOL);
+            return ExitCode::USAGE;
+        }
+
+        if ($visibility !== null && $visibility !== '' && !in_array($visibility, VisibilityFilter::LEVELS, true)) {
+            fwrite(
+                STDERR,
+                'Error: --visibility must be one of: ' . implode(', ', VisibilityFilter::LEVELS) . PHP_EOL
+            );
+            return ExitCode::USAGE;
+        }
+
         try {
             $symbols = $this->symbolExtractor->extract($file);
         } catch (\Throwable $exception) {
             fwrite(STDERR, 'Error: failed to parse file: ' . $exception->getMessage() . PHP_EOL);
             return ExitCode::FILE_ERROR;
+        }
+
+        if ($visibility !== null && $visibility !== '') {
+            $symbols = $this->visibilityFilter->apply($symbols, $visibility);
         }
 
         if ($filter !== null && $filter !== '') {
