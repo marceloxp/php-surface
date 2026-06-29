@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace PhpSurface\Extractor;
 
+use voku\SimplePhpParser\Model\BasePHPClass;
 use voku\SimplePhpParser\Model\BasePHPElement;
 use voku\SimplePhpParser\Parsers\PhpCodeParser;
 
 final class SymbolExtractor
 {
+    public function __construct(
+        private readonly MethodExtractor $methodExtractor = new MethodExtractor(),
+    ) {
+    }
+
     /**
-     * @return list<array{
-     *     name: string,
-     *     namespace: string,
-     *     type: string,
-     *     line: int
-     * }>
+     * @return list<array<string, mixed>>
      */
     public function extract(string $filePath): array
     {
@@ -23,11 +24,11 @@ final class SymbolExtractor
         $symbols = [];
 
         foreach ($container->getInterfaces() as $interface) {
-            $symbols[] = $this->mapSymbol($interface, 'interface');
+            $symbols[] = $this->mapSymbol($interface, 'interface', $filePath);
         }
 
         foreach ($container->getTraits() as $trait) {
-            $symbols[] = $this->mapSymbol($trait, 'trait');
+            $symbols[] = $this->mapSymbol($trait, 'trait', $filePath);
         }
 
         foreach ($container->getClasses() as $class) {
@@ -35,7 +36,7 @@ final class SymbolExtractor
                 continue;
             }
 
-            $symbols[] = $this->mapSymbol($class, 'class');
+            $symbols[] = $this->mapSymbol($class, 'class', $filePath);
         }
 
         usort(
@@ -48,18 +49,27 @@ final class SymbolExtractor
     }
 
     /**
-     * @return array{name: string, namespace: string, type: string, line: int}
+     * @return array<string, mixed>
      */
-    private function mapSymbol(BasePHPElement $element, string $type): array
+    private function mapSymbol(BasePHPElement $element, string $type, string $filePath): array
     {
         [$namespace, $name] = $this->splitFqn($element->name);
 
-        return [
+        $symbol = [
             'name' => $name,
             'namespace' => $namespace,
             'type' => $type,
             'line' => $element->line ?? 0,
         ];
+
+        if ($element instanceof BasePHPClass) {
+            $methods = $this->methodExtractor->extract($element, $filePath);
+            if ($methods !== []) {
+                $symbol['methods'] = $methods;
+            }
+        }
+
+        return $symbol;
     }
 
     /**
