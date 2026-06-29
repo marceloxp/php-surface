@@ -6,6 +6,7 @@ namespace PhpSurface\Cli;
 
 use PhpSurface\Extractor\SymbolExtractor;
 use PhpSurface\Output\JsonRenderer;
+use PhpSurface\Output\TextRenderer;
 use PhpSurface\Version;
 
 final class Application
@@ -13,6 +14,7 @@ final class Application
     public function __construct(
         private readonly SymbolExtractor $symbolExtractor = new SymbolExtractor(),
         private readonly JsonRenderer $jsonRenderer = new JsonRenderer(),
+        private readonly TextRenderer $textRenderer = new TextRenderer(),
     ) {
     }
     /**
@@ -57,7 +59,11 @@ final class Application
             return ExitCode::FILE_ERROR;
         }
 
-        fwrite(STDOUT, $this->jsonRenderer->render($file, $symbols));
+        if ($this->hasFlag($args, '--text')) {
+            fwrite(STDOUT, $this->textRenderer->render($file, $symbols));
+        } else {
+            fwrite(STDOUT, $this->jsonRenderer->render($file, $symbols));
+        }
 
         return ExitCode::SUCCESS;
     }

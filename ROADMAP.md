@@ -37,7 +37,7 @@ Funcionalidades **fora do escopo** atual — só após MVP validado:
 | 1 — CLI            | ✅ aprovada | 2026-06-29 |       |
 | 2 — Símbolos       | ✅ aprovada | 2026-06-29 |       |
 | 3 — Métodos lean   | ✅ aprovada | 2026-06-29 |       |
-| 4 — Docblocks      | ⬜ pendente |      |       |
+| 4 — Docblocks      | ✅ aprovada | 2026-06-29 |       |
 | 5 — `--text`       | ⬜ pendente |      |       |
 | 6 — `--filter`     | ⬜ pendente |      |       |
 | 7 — `--visibility` | ⬜ pendente |      |       |

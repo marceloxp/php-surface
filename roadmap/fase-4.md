@@ -41,10 +41,10 @@ class PaymentGateway
 
 **Critérios de aceite:**
 
-- [ ] `charge`: tem `docblock.summary`; **sem** `return`/`throws` se não declarados
-- [ ] `refund`: **sem** chave `docblock`
-- [ ] `pending`: `summary`, `return` e `throws` presentes com conteúdo correto
-- [ ] Nenhum método tem `"summary": null` ou `"throws": []` vazio só para preencher
-- [ ] JSON default ainda **sem** `parameters`
+- [x] `charge`: tem `docblock.summary`; **sem** `return`/`throws` se não declarados
+- [x] `refund`: **sem** chave `docblock`
+- [x] `pending`: `summary`, `return` e `throws` presentes com conteúdo correto
+- [x] Nenhum método tem `"summary": null` ou `"throws": []` vazio só para preencher
+- [x] JSON default ainda **sem** `parameters`
 
 **Próxima fase bloqueada até:** todos os itens passarem.
