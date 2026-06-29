@@ -19,10 +19,10 @@
 
 **Critérios de aceite:**
 
-- [ ] `--show save` retorna linhas 42–59 (ou range real da fixture) com corpo do método
-- [ ] `ClassName::methodName` retorna match único correto
-- [ ] Nome ambíguo (`read` em interface + class) → **todos** os matches, não erro silencioso
-- [ ] Nome inexistente → mensagem clara, exit ≠ 0
-- [ ] Nenhum `require`/`include` do arquivo analisado (confirmar: código com `exit` ou side-effect no top-level não roda)
+- [x] `--show save` retorna linhas 42–59 (ou range real da fixture) com corpo do método
+- [x] `ClassName::methodName` retorna match único correto
+- [x] Nome ambíguo (`read` em interface + class) → **todos** os matches, não erro silencioso
+- [x] Nome inexistente → mensagem clara, exit ≠ 0
+- [x] Nenhum `require`/`include` do arquivo analisado (confirmar: código com `exit` ou side-effect no top-level não roda)
 
 **Próxima fase bloqueada até:** todos os itens passarem.

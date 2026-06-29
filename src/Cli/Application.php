@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PhpSurface\Cli;
 
+use PhpSurface\Parser\ParseException;
 use PhpSurface\Extractor\ShowExtractor;
 use PhpSurface\Extractor\SymbolExtractor;
 use PhpSurface\Filter\MethodNameFilter;
@@ -88,6 +89,9 @@ final class Application
 
         try {
             $symbols = $this->symbolExtractor->extract($file, $this->hasFlag($args, '--full'));
+        } catch (ParseException $exception) {
+            fwrite(STDERR, 'Error: ' . $exception->getMessage() . PHP_EOL);
+            return ExitCode::FILE_ERROR;
         } catch (\Throwable $exception) {
             fwrite(STDERR, 'Error: failed to parse file: ' . $exception->getMessage() . PHP_EOL);
             return ExitCode::FILE_ERROR;

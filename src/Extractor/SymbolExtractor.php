@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PhpSurface\Extractor;
 
+use PhpSurface\Parser\ParseException;
 use voku\SimplePhpParser\Model\BasePHPClass;
 use voku\SimplePhpParser\Model\BasePHPElement;
 use voku\SimplePhpParser\Parsers\PhpCodeParser;
@@ -21,6 +22,12 @@ final class SymbolExtractor
     public function extract(string $filePath, bool $full = false): array
     {
         $container = PhpCodeParser::getPhpFiles($filePath);
+        $parseErrors = $container->getParseErrors();
+
+        if ($parseErrors !== []) {
+            throw new ParseException($this->formatParseError($parseErrors[0]));
+        }
+
         $symbols = [];
 
         foreach ($container->getInterfaces() as $interface) {
@@ -88,5 +95,22 @@ final class SymbolExtractor
             substr($fqn, 0, $separator),
             substr($fqn, $separator + 1),
         ];
+    }
+
+    private function formatParseError(string $error): string
+    {
+        $message = $error;
+
+        if (preg_match('/\|\s*(.+)$/m', $error, $matches) === 1) {
+            $message = $matches[1];
+        }
+
+        $message = trim(strtok($message, "\n") ?: $message);
+
+        if (preg_match('/^Syntax error/i', $message) === 1) {
+            return $message;
+        }
+
+        return $message !== '' ? $message : 'invalid PHP syntax';
     }
 }
