@@ -43,6 +43,6 @@ Funcionalidades **fora do escopo** atual — só após MVP validado:
 | 7 — `--visibility` | ✅ aprovada | 2026-06-29 |       |
 | 8 — `--full`       | ✅ aprovada | 2026-06-29 |       |
 | 9 — `--show`       | ✅ aprovada | 2026-06-29 |       |
-| 10 — Robustez      | ⬜ pendente |      |       |
+| 10 — Robustez      | ✅ aprovada | 2026-06-29 | MVP concluído |
 
 Atualize esta tabela ao aprovar cada fase.

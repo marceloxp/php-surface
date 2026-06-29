@@ -20,9 +20,9 @@ PHP_SURFACE_BIN_PATH=/caminho/para/php ./bin/php-surface tests/fixtures/Methods.
 
 **Critérios de aceite:**
 
-- [ ] Arquivo vazio → `{"file":"...","symbols":[]}` (ou equivalente)
-- [ ] Syntax error → exit ≠ 0, mensagem compreensível
-- [ ] Duas execuções no mesmo arquivo → diff vazio
-- [ ] `PHP_SURFACE_BIN_PATH` documentado e funcional (se wrapper shell existir)
+- [x] Arquivo vazio → `{"file":"...","symbols":[]}` (ou equivalente)
+- [x] Syntax error → exit ≠ 0, mensagem compreensível
+- [x] Duas execuções no mesmo arquivo → diff vazio
+- [x] `PHP_SURFACE_BIN_PATH` documentado e funcional (se wrapper shell existir)
 
 **MVP concluído quando:** fase 10 aprovada.
