@@ -77,7 +77,7 @@ final class Application
         }
 
         try {
-            $symbols = $this->symbolExtractor->extract($file);
+            $symbols = $this->symbolExtractor->extract($file, $this->hasFlag($args, '--full'));
         } catch (\Throwable $exception) {
             fwrite(STDERR, 'Error: failed to parse file: ' . $exception->getMessage() . PHP_EOL);
             return ExitCode::FILE_ERROR;

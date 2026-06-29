@@ -19,7 +19,7 @@ final class TextRenderer
             foreach ($symbol['methods'] ?? [] as $method) {
                 $lines[] = '  ' . $method['signature'];
 
-                $summary = $method['docblock']['summary'] ?? null;
+                $summary = $method['docblock']['text'] ?? $method['docblock']['summary'] ?? null;
                 if (is_string($summary) && $summary !== '') {
                     $lines[] = '      ' . $summary;
                 }

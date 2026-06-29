@@ -13,13 +13,14 @@ final class MethodExtractor
     public function __construct(
         private readonly MethodAstIndex $methodAstIndex = new MethodAstIndex(),
         private readonly DocblockExtractor $docblockExtractor = new DocblockExtractor(),
+        private readonly ParameterExtractor $parameterExtractor = new ParameterExtractor(),
     ) {
     }
 
     /**
      * @return list<array<string, mixed>>
      */
-    public function extract(BasePHPClass $symbol, string $filePath): array
+    public function extract(BasePHPClass $symbol, string $filePath, bool $full = false): array
     {
         $astIndex = $this->methodAstIndex->index($filePath);
         $sourceLines = file($filePath, FILE_IGNORE_NEW_LINES);
@@ -30,7 +31,7 @@ final class MethodExtractor
         $methods = [];
 
         foreach ($symbol->methods as $method) {
-            $methods[] = $this->mapMethod($method, $sourceLines, $astIndex);
+            $methods[] = $this->mapMethod($method, $sourceLines, $astIndex, $full);
         }
 
         usort(
@@ -48,7 +49,7 @@ final class MethodExtractor
      *
      * @return array<string, mixed>
      */
-    private function mapMethod(PHPMethod $method, array $sourceLines, array $astIndex): array
+    private function mapMethod(PHPMethod $method, array $sourceLines, array $astIndex, bool $full): array
     {
         $startLine = $method->line ?? 0;
         $methodMeta = $astIndex[$startLine] ?? null;
@@ -73,9 +74,16 @@ final class MethodExtractor
         }
 
         $docComment = $methodMeta !== null ? $methodMeta['docComment'] : null;
-        $docblock = $this->docblockExtractor->extract($method, $docComment);
+        $docblock = $this->docblockExtractor->extract($method, $docComment, $full);
         if ($docblock !== null) {
             $mapped['docblock'] = $docblock;
+        }
+
+        if ($full) {
+            $parameters = $this->parameterExtractor->extract($method);
+            if ($parameters !== []) {
+                $mapped['parameters'] = $parameters;
+            }
         }
 
         return $mapped;

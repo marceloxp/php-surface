@@ -17,9 +17,9 @@
 
 **Critérios de aceite:**
 
-- [ ] `--visibility public` → só `save` e `lock` (conforme fixture)
-- [ ] `--visibility protected` → só métodos protected
-- [ ] `--visibility public --filter save` → interseção correta
-- [ ] Valor inválido → erro em stderr, exit ≠ 0
+- [x] `--visibility public` → só `save` e `lock` (conforme fixture)
+- [x] `--visibility protected` → só métodos protected
+- [x] `--visibility public --filter save` → interseção correta
+- [x] Valor inválido → erro em stderr, exit ≠ 0
 
 **Próxima fase bloqueada até:** todos os itens passarem.

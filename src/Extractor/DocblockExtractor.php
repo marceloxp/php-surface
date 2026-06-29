@@ -10,9 +10,9 @@ use voku\SimplePhpParser\Parsers\Helper\DocFactoryProvider;
 final class DocblockExtractor
 {
     /**
-     * @return array{summary?: string, return?: string, throws?: list<string>}|null
+     * @return array{summary?: string, text?: string, return?: string, throws?: list<string>}|null
      */
-    public function extract(PHPMethod $method, ?string $docCommentText): ?array
+    public function extract(PHPMethod $method, ?string $docCommentText, bool $full = false): ?array
     {
         if ($docCommentText === null) {
             return null;
@@ -20,9 +20,16 @@ final class DocblockExtractor
 
         $docblock = [];
 
-        $summary = trim($method->summary);
-        if ($summary !== '') {
-            $docblock['summary'] = $summary;
+        if ($full) {
+            $text = trim($docCommentText);
+            if ($text !== '') {
+                $docblock['text'] = $text;
+            }
+        } else {
+            $summary = trim($method->summary);
+            if ($summary !== '') {
+                $docblock['summary'] = $summary;
+            }
         }
 
         if ($method->returnPhpDocRaw !== null) {

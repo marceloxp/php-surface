@@ -18,17 +18,17 @@ final class SymbolExtractor
     /**
      * @return list<array<string, mixed>>
      */
-    public function extract(string $filePath): array
+    public function extract(string $filePath, bool $full = false): array
     {
         $container = PhpCodeParser::getPhpFiles($filePath);
         $symbols = [];
 
         foreach ($container->getInterfaces() as $interface) {
-            $symbols[] = $this->mapSymbol($interface, 'interface', $filePath);
+            $symbols[] = $this->mapSymbol($interface, 'interface', $filePath, $full);
         }
 
         foreach ($container->getTraits() as $trait) {
-            $symbols[] = $this->mapSymbol($trait, 'trait', $filePath);
+            $symbols[] = $this->mapSymbol($trait, 'trait', $filePath, $full);
         }
 
         foreach ($container->getClasses() as $class) {
@@ -36,7 +36,7 @@ final class SymbolExtractor
                 continue;
             }
 
-            $symbols[] = $this->mapSymbol($class, 'class', $filePath);
+            $symbols[] = $this->mapSymbol($class, 'class', $filePath, $full);
         }
 
         usort(
@@ -51,7 +51,7 @@ final class SymbolExtractor
     /**
      * @return array<string, mixed>
      */
-    private function mapSymbol(BasePHPElement $element, string $type, string $filePath): array
+    private function mapSymbol(BasePHPElement $element, string $type, string $filePath, bool $full): array
     {
         [$namespace, $name] = $this->splitFqn($element->name);
 
@@ -63,7 +63,7 @@ final class SymbolExtractor
         ];
 
         if ($element instanceof BasePHPClass) {
-            $methods = $this->methodExtractor->extract($element, $filePath);
+            $methods = $this->methodExtractor->extract($element, $filePath, $full);
             if ($methods !== []) {
                 $symbol['methods'] = $methods;
             }

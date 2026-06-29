@@ -40,7 +40,7 @@ Funcionalidades **fora do escopo** atual — só após MVP validado:
 | 4 — Docblocks      | ✅ aprovada | 2026-06-29 |       |
 | 5 — `--text`       | ✅ aprovada | 2026-06-29 |       |
 | 6 — `--filter`     | ✅ aprovada | 2026-06-29 |       |
-| 7 — `--visibility` | ⬜ pendente |      |       |
+| 7 — `--visibility` | ✅ aprovada | 2026-06-29 |       |
 | 8 — `--full`       | ⬜ pendente |      |       |
 | 9 — `--show`       | ⬜ pendente |      |       |
 | 10 — Robustez      | ⬜ pendente |      |       |
