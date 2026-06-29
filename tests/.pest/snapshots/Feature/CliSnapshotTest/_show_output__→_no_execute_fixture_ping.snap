@@ -1,0 +1,14 @@
+{
+    "file": "tests\/fixtures\/NoExecute.php",
+    "matches": [
+        {
+            "symbol": "NoExecute",
+            "namespace": "App\\Demo",
+            "type": "class",
+            "method": "ping",
+            "startLine": 7,
+            "endLine": 12,
+            "source": "    public function ping(): string\n    {\n        exit('must not run when only showing source');\n\n        return 'ok';\n    }\n"
+        }
+    ]
+}

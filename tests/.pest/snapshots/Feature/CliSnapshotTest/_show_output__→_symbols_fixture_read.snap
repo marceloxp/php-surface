@@ -1,0 +1,23 @@
+{
+    "file": "tests\/fixtures\/Symbols.php",
+    "matches": [
+        {
+            "symbol": "Readable",
+            "namespace": "App\\Demo",
+            "type": "interface",
+            "method": "read",
+            "startLine": 9,
+            "endLine": 9,
+            "source": "    public function read(): string;\n"
+        },
+        {
+            "symbol": "UserRepository",
+            "namespace": "App\\Demo",
+            "type": "class",
+            "method": "read",
+            "startLine": 22,
+            "endLine": 25,
+            "source": "    public function read(): string\n    {\n        return '';\n    }\n"
+        }
+    ]
+}

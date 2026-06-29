@@ -1,0 +1,47 @@
+{
+    "file": "tests\/fixtures\/Docblocks.php",
+    "symbols": [
+        {
+            "name": "PaymentGateway",
+            "namespace": "App\\Svc",
+            "type": "class",
+            "line": 7,
+            "methods": [
+                {
+                    "name": "charge",
+                    "visibility": "public",
+                    "signature": "public function charge(Money $amount): string",
+                    "startLine": 10,
+                    "endLine": 12,
+                    "returnType": "string",
+                    "docblock": {
+                        "summary": "Processa pagamento e retorna ID da transa\u00e7\u00e3o."
+                    }
+                },
+                {
+                    "name": "refund",
+                    "visibility": "public",
+                    "signature": "public function refund(string $id): void",
+                    "startLine": 14,
+                    "endLine": 16,
+                    "returnType": "void"
+                },
+                {
+                    "name": "pending",
+                    "visibility": "protected",
+                    "signature": "protected function pending(): array",
+                    "startLine": 24,
+                    "endLine": 27,
+                    "returnType": "array",
+                    "docblock": {
+                        "summary": "Lista cobran\u00e7as pendentes.",
+                        "return": "array<int, Charge>",
+                        "throws": [
+                            "GatewayException quando o provedor est\u00e1 indispon\u00edvel"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

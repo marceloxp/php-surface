@@ -1,0 +1,8 @@
+tests/fixtures/Docblocks.php
+
+class App\Svc\PaymentGateway (line 7)
+  public function charge(Money $amount): string
+      Processa pagamento e retorna ID da transação.
+  public function refund(string $id): void
+  protected function pending(): array
+      Lista cobranças pendentes.

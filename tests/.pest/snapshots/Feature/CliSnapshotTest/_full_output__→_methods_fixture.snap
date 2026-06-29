@@ -1,0 +1,66 @@
+{
+    "file": "tests\/fixtures\/Methods.php",
+    "symbols": [
+        {
+            "name": "OrderService",
+            "namespace": "App\\Repo",
+            "type": "class",
+            "line": 7,
+            "methods": [
+                {
+                    "name": "save",
+                    "visibility": "public",
+                    "signature": "public function save(Order $order): void",
+                    "startLine": 9,
+                    "endLine": 11,
+                    "returnType": "void",
+                    "parameters": [
+                        {
+                            "name": "order",
+                            "type": "Order"
+                        }
+                    ]
+                },
+                {
+                    "name": "findActive",
+                    "visibility": "protected",
+                    "signature": "protected static function findActive(int $companyId): array",
+                    "startLine": 13,
+                    "endLine": 16,
+                    "returnType": "array",
+                    "modifiers": [
+                        "static"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "companyId",
+                            "type": "int"
+                        }
+                    ]
+                },
+                {
+                    "name": "lock",
+                    "visibility": "public",
+                    "signature": "final public function lock(): bool",
+                    "startLine": 18,
+                    "endLine": 21,
+                    "returnType": "bool",
+                    "modifiers": [
+                        "final"
+                    ]
+                },
+                {
+                    "name": "resolve",
+                    "visibility": "protected",
+                    "signature": "abstract protected function resolve(): mixed",
+                    "startLine": 23,
+                    "endLine": 23,
+                    "returnType": "mixed",
+                    "modifiers": [
+                        "abstract"
+                    ]
+                }
+            ]
+        }
+    ]
+}

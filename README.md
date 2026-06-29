@@ -52,3 +52,9 @@ Or directly:
 ```bash
 ./vendor/bin/pest
 ```
+
+CLI output is covered by snapshot tests in `tests/Feature/CliSnapshotTest.php`. Golden files live under `tests/.pest/snapshots/`. After intentional output changes, refresh them with:
+
+```bash
+./vendor/bin/pest --update-snapshots
+```

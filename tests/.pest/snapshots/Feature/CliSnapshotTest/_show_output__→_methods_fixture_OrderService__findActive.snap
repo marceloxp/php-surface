@@ -1,0 +1,14 @@
+{
+    "file": "tests\/fixtures\/Methods.php",
+    "matches": [
+        {
+            "symbol": "OrderService",
+            "namespace": "App\\Repo",
+            "type": "class",
+            "method": "findActive",
+            "startLine": 13,
+            "endLine": 16,
+            "source": "    protected static function findActive(int $companyId): array\n    {\n        return [];\n    }\n"
+        }
+    ]
+}

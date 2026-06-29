@@ -1,0 +1,24 @@
+{
+    "file": "tests\/fixtures\/Docblocks.php",
+    "symbols": [
+        {
+            "name": "PaymentGateway",
+            "namespace": "App\\Svc",
+            "type": "class",
+            "line": 7,
+            "methods": [
+                {
+                    "name": "charge",
+                    "visibility": "public",
+                    "signature": "public function charge(Money $amount): string",
+                    "startLine": 10,
+                    "endLine": 12,
+                    "returnType": "string",
+                    "docblock": {
+                        "summary": "Processa pagamento e retorna ID da transa\u00e7\u00e3o."
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+tests/fixtures/Methods.php
+
+class App\Repo\OrderService (line 7)
+  public function save(Order $order): void
+  protected static function findActive(int $companyId): array
+  final public function lock(): bool
+  abstract protected function resolve(): mixed

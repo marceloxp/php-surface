@@ -1,0 +1,28 @@
+{
+    "file": "tests\/fixtures\/Docblocks.php",
+    "symbols": [
+        {
+            "name": "PaymentGateway",
+            "namespace": "App\\Svc",
+            "type": "class",
+            "line": 7,
+            "methods": [
+                {
+                    "name": "pending",
+                    "visibility": "protected",
+                    "signature": "protected function pending(): array",
+                    "startLine": 24,
+                    "endLine": 27,
+                    "returnType": "array",
+                    "docblock": {
+                        "text": "\/**\n     * Lista cobran\u00e7as pendentes.\n     *\n     * @return array<int, Charge>\n     * @throws GatewayException quando o provedor est\u00e1 indispon\u00edvel\n     *\/",
+                        "return": "array<int, Charge>",
+                        "throws": [
+                            "GatewayException quando o provedor est\u00e1 indispon\u00edvel"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "file": "tests\/fixtures\/Symbols.php",
+    "symbols": [
+        {
+            "name": "Readable",
+            "namespace": "App\\Demo",
+            "type": "interface",
+            "line": 7,
+            "methods": [
+                {
+                    "name": "read",
+                    "visibility": "public",
+                    "signature": "public function read(): string",
+                    "startLine": 9,
+                    "endLine": 9,
+                    "returnType": "string"
+                }
+            ]
+        },
+        {
+            "name": "Timestampable",
+            "namespace": "App\\Demo",
+            "type": "trait",
+            "line": 12,
+            "methods": [
+                {
+                    "name": "now",
+                    "visibility": "private",
+                    "signature": "private function now(): int",
+                    "startLine": 14,
+                    "endLine": 17,
+                    "returnType": "int"
+                }
+            ]
+        },
+        {
+            "name": "UserRepository",
+            "namespace": "App\\Demo",
+            "type": "class",
+            "line": 20,
+            "methods": [
+                {
+                    "name": "read",
+                    "visibility": "public",
+                    "signature": "public function read(): string",
+                    "startLine": 22,
+                    "endLine": 25,
+                    "returnType": "string"
+                }
+            ]
+        }
+    ]
+}
