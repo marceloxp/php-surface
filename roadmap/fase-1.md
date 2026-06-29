@@ -21,10 +21,10 @@ composer install
 
 **Critérios de aceite:**
 
-- [ ] `composer install` conclui sem erro
-- [ ] `--help` lista os comandos/flags previstos na proposta (mesmo que ainda não implementados)
-- [ ] `--version` imprime versão
-- [ ] Arquivo inexistente → exit code ≠ 0 e mensagem em stderr
-- [ ] Arquivo que não é PHP → exit code ≠ 0
+- [x] `composer install` conclui sem erro
+- [x] `--help` lista os comandos/flags previstos na proposta (mesmo que ainda não implementados)
+- [x] `--version` imprime versão
+- [x] Arquivo inexistente → exit code ≠ 0 e mensagem em stderr
+- [x] Arquivo que não é PHP → exit code ≠ 0
 
 **Próxima fase bloqueada até:** os cinco itens acima passarem.

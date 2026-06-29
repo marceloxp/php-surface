@@ -4,10 +4,17 @@ declare(strict_types=1);
 
 namespace PhpSurface\Cli;
 
+use PhpSurface\Extractor\SymbolExtractor;
+use PhpSurface\Output\JsonRenderer;
 use PhpSurface\Version;
 
 final class Application
 {
+    public function __construct(
+        private readonly SymbolExtractor $symbolExtractor = new SymbolExtractor(),
+        private readonly JsonRenderer $jsonRenderer = new JsonRenderer(),
+    ) {
+    }
     /**
      * @param list<string> $argv
      */
@@ -42,6 +49,15 @@ final class Application
             fwrite(STDERR, 'Error: ' . $error . PHP_EOL);
             return ExitCode::FILE_ERROR;
         }
+
+        try {
+            $symbols = $this->symbolExtractor->extract($file);
+        } catch (\Throwable $exception) {
+            fwrite(STDERR, 'Error: failed to parse file: ' . $exception->getMessage() . PHP_EOL);
+            return ExitCode::FILE_ERROR;
+        }
+
+        fwrite(STDOUT, $this->jsonRenderer->render($file, $symbols));
 
         return ExitCode::SUCCESS;
     }

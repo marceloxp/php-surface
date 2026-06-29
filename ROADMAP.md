@@ -34,7 +34,7 @@ Funcionalidades **fora do escopo** atual — só após MVP validado:
 
 | Fase               | Status      | Data | Notas |
 | ------------------ | ----------- | ---- | ----- |
-| 1 — CLI            | ⬜ pendente |      |       |
+| 1 — CLI            | ✅ aprovada | 2026-06-29 |       |
 | 2 — Símbolos       | ⬜ pendente |      |       |
 | 3 — Métodos lean   | ⬜ pendente |      |       |
 | 4 — Docblocks      | ⬜ pendente |      |       |
