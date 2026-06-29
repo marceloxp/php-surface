@@ -28,8 +28,10 @@ final class Application
         private readonly ShowRenderer $showRenderer = new ShowRenderer(),
         private readonly StatsCollector $statsCollector = new StatsCollector(),
         private readonly StatsRenderer $statsRenderer = new StatsRenderer(),
+        private readonly OutputGuard $outputGuard = new OutputGuard(),
     ) {
     }
+
     /**
      * @param list<string> $argv
      */
@@ -108,13 +110,12 @@ final class Application
                 return ExitCode::USAGE;
             }
 
-            if ($this->hasFlag($args, '--text')) {
-                fwrite(STDOUT, $this->showRenderer->renderText($file, $matches));
-            } else {
-                fwrite(STDOUT, $this->showRenderer->renderJson($file, $matches));
-            }
+            $isText = $this->hasFlag($args, '--text');
+            $output = $isText
+                ? $this->showRenderer->renderText($file, $matches)
+                : $this->showRenderer->renderJson($file, $matches);
 
-            return ExitCode::SUCCESS;
+            return $this->emitOutput($output, $file, $args, $isText, $symbols, $show);
         }
 
         if ($visibility !== null && $visibility !== '') {
@@ -127,23 +128,122 @@ final class Application
 
         if ($this->hasFlag($args, '--stats')) {
             $stats = $this->statsCollector->collect($file, $symbols);
+            $isText = $this->hasFlag($args, '--text');
+            $output = $isText
+                ? $this->statsRenderer->renderText($stats)
+                : $this->statsRenderer->renderJson($stats);
 
-            if ($this->hasFlag($args, '--text')) {
-                fwrite(STDOUT, $this->statsRenderer->renderText($stats));
-            } else {
-                fwrite(STDOUT, $this->statsRenderer->renderJson($stats));
-            }
-
-            return ExitCode::SUCCESS;
+            return $this->emitOutput($output, $file, $args, $isText, $symbols);
         }
 
-        if ($this->hasFlag($args, '--text')) {
-            fwrite(STDOUT, $this->textRenderer->render($file, $symbols));
-        } else {
-            fwrite(STDOUT, $this->jsonRenderer->render($file, $symbols));
+        $isText = $this->hasFlag($args, '--text');
+        $output = $isText
+            ? $this->textRenderer->render($file, $symbols)
+            : $this->jsonRenderer->render($file, $symbols);
+
+        return $this->emitOutput($output, $file, $args, $isText, $symbols);
+    }
+
+    /**
+     * @param list<string> $args
+     * @param list<array<string, mixed>> $symbols
+     */
+    private function emitOutput(
+        string $output,
+        string $file,
+        array $args,
+        bool $isText,
+        array $symbols = [],
+        ?string $showTarget = null,
+    ): int {
+        $outputBytes = strlen($output);
+
+        if (!$this->outputGuard->isAllowed($outputBytes, $this->hasFlag($args, '--allow-large-output'))) {
+            $limitBytes = $this->outputGuard->getLimitBytes();
+            $hints = $this->buildHints($file, $showTarget, $symbols);
+            $fileBytes = filesize($file);
+
+            $blocked = $isText
+                ? $this->outputGuard->formatBlockedText($file, $fileBytes, $outputBytes, $limitBytes, $hints)
+                : $this->outputGuard->formatBlockedJson($file, $fileBytes, $outputBytes, $limitBytes, $hints);
+
+            fwrite(STDERR, $blocked);
+
+            return ExitCode::OUTPUT_TOO_LARGE;
         }
+
+        fwrite(STDOUT, $output);
 
         return ExitCode::SUCCESS;
+    }
+
+    /**
+     * @param list<array<string, mixed>> $symbols
+     *
+     * @return list<string>
+     */
+    private function buildHints(string $file, ?string $showTarget, array $symbols): array
+    {
+        if ($showTarget !== null && $showTarget !== '') {
+            return [
+                sprintf('php-surface %s --allow-large-output --show %s', $file, $showTarget),
+            ];
+        }
+
+        $hints = [
+            sprintf('php-surface %s --stats', $file),
+            sprintf('php-surface %s --visibility public', $file),
+        ];
+
+        $example = $this->exampleExplorationTarget($symbols);
+        if ($example !== null) {
+            $hints[] = sprintf('php-surface %s --filter %s', $file, $example['method']);
+            $hints[] = sprintf('php-surface %s --show %s', $file, $example['show']);
+        } else {
+            $hints[] = sprintf('php-surface %s --filter <method>', $file);
+            $hints[] = sprintf('php-surface %s --show ClassName::method', $file);
+        }
+
+        $hints[] = sprintf('php-surface %s --allow-large-output', $file);
+
+        return $hints;
+    }
+
+    /**
+     * @param list<array<string, mixed>> $symbols
+     *
+     * @return array{method: string, show: string}|null
+     */
+    private function exampleExplorationTarget(array $symbols): ?array
+    {
+        $best = null;
+        $bestCount = 0;
+
+        foreach ($symbols as $symbol) {
+            $methods = $symbol['methods'] ?? [];
+            $count = count($methods);
+
+            if ($count > $bestCount) {
+                $bestCount = $count;
+                $best = $symbol;
+            }
+        }
+
+        if ($best === null || $bestCount === 0) {
+            return null;
+        }
+
+        $method = $best['methods'][0]['name'] ?? null;
+        $className = $best['name'] ?? null;
+
+        if (!is_string($method) || !is_string($className)) {
+            return null;
+        }
+
+        return [
+            'method' => $method,
+            'show' => $className . '::' . $method,
+        ];
     }
 
     /**
@@ -243,8 +343,12 @@ Options:
   --show <symbol>       Extract method body (e.g. save or ClassName::save)
   --stats               Summary counts instead of full symbol map
   --full                Include structured parameters and full docblocks
+  --allow-large-output  Skip output size guard (default limit: 8 KB)
   -h, --help            Show this help message
   -V, --version         Show version information
+
+Environment:
+  PHP_SURFACE_MAX_OUTPUT_BYTES  Override default output limit (8192)
 
 Examples:
   php-surface Foo.php
@@ -254,6 +358,7 @@ Examples:
   php-surface Foo.php --show UserRepository::save
   php-surface Foo.php --stats
   php-surface Foo.php --full
+  php-surface Foo.php --allow-large-output
 
 HELP;
 

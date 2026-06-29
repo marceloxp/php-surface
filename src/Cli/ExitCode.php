@@ -11,4 +11,6 @@ final class ExitCode
     public const USAGE = 1;
 
     public const FILE_ERROR = 2;
+
+    public const OUTPUT_TOO_LARGE = 3;
 }
