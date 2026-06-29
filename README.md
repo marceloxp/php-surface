@@ -54,12 +54,12 @@ Or bypass the guard explicitly:
 
 ## Exit codes
 
-| Code | Meaning |
-|------|---------|
-| `0` | Success |
-| `1` | Usage error (missing argument, invalid flag, symbol not found) |
-| `2` | File error (missing file, invalid extension, parse error) |
-| `3` | Output too large (use `--stats`, filters, `--show`, or `--allow-large-output`) |
+| Code | Meaning                                                                                    |
+| ---- | ------------------------------------------------------------------------------------------ |
+| `0`  | Success                                                                                    |
+| `1`  | Usage error (missing argument, invalid flag, symbol not found)                             |
+| `2`  | File error (missing file, invalid extension, parse error)                                  |
+| `3`  | Output too large (use `--stats`, `--search`, filters, `--show`, or `--allow-large-output`) |
 
 ## Tests
 
