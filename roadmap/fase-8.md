@@ -19,10 +19,10 @@
 
 **Critérios de aceite:**
 
-- [ ] Sem `--full`, `charge` **não** tem `parameters`
-- [ ] Com `--full`, `charge` tem `parameters` com `Money $amount` correto
-- [ ] Com `--full`, docblock completo disponível (não só summary)
-- [ ] `--full` combinável com `--filter` e `--visibility`
-- [ ] Mapa default (sem `--full`) continua enxuto
+- [x] Sem `--full`, `charge` **não** tem `parameters`
+- [x] Com `--full`, `charge` tem `parameters` com `Money $amount` correto
+- [x] Com `--full`, docblock completo disponível (não só summary)
+- [x] `--full` combinável com `--filter` e `--visibility`
+- [x] Mapa default (sem `--full`) continua enxuto
 
 **Próxima fase bloqueada até:** todos os itens passarem.

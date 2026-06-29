@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace PhpSurface\Cli;
 
+use PhpSurface\Extractor\ShowExtractor;
 use PhpSurface\Extractor\SymbolExtractor;
 use PhpSurface\Filter\MethodNameFilter;
 use PhpSurface\Filter\VisibilityFilter;
 use PhpSurface\Output\JsonRenderer;
+use PhpSurface\Output\ShowRenderer;
 use PhpSurface\Output\TextRenderer;
 use PhpSurface\Version;
 
@@ -17,8 +19,10 @@ final class Application
         private readonly SymbolExtractor $symbolExtractor = new SymbolExtractor(),
         private readonly MethodNameFilter $methodNameFilter = new MethodNameFilter(),
         private readonly VisibilityFilter $visibilityFilter = new VisibilityFilter(),
+        private readonly ShowExtractor $showExtractor = new ShowExtractor(),
         private readonly JsonRenderer $jsonRenderer = new JsonRenderer(),
         private readonly TextRenderer $textRenderer = new TextRenderer(),
+        private readonly ShowRenderer $showRenderer = new ShowRenderer(),
     ) {
     }
     /**
@@ -76,11 +80,33 @@ final class Application
             return ExitCode::USAGE;
         }
 
+        $show = $this->resolveOptionValue($args, '--show');
+        if ($this->hasFlag($args, '--show') && ($show === null || $show === '')) {
+            fwrite(STDERR, 'Error: --show requires a value' . PHP_EOL);
+            return ExitCode::USAGE;
+        }
+
         try {
             $symbols = $this->symbolExtractor->extract($file, $this->hasFlag($args, '--full'));
         } catch (\Throwable $exception) {
             fwrite(STDERR, 'Error: failed to parse file: ' . $exception->getMessage() . PHP_EOL);
             return ExitCode::FILE_ERROR;
+        }
+
+        if ($show !== null && $show !== '') {
+            $matches = $this->showExtractor->extract($file, $symbols, $show);
+            if ($matches === []) {
+                fwrite(STDERR, sprintf('Error: no symbol matched "%s"' . PHP_EOL, $show));
+                return ExitCode::USAGE;
+            }
+
+            if ($this->hasFlag($args, '--text')) {
+                fwrite(STDOUT, $this->showRenderer->renderText($file, $matches));
+            } else {
+                fwrite(STDOUT, $this->showRenderer->renderJson($file, $matches));
+            }
+
+            return ExitCode::SUCCESS;
         }
 
         if ($visibility !== null && $visibility !== '') {

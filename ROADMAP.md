@@ -41,7 +41,7 @@ Funcionalidades **fora do escopo** atual — só após MVP validado:
 | 5 — `--text`       | ✅ aprovada | 2026-06-29 |       |
 | 6 — `--filter`     | ✅ aprovada | 2026-06-29 |       |
 | 7 — `--visibility` | ✅ aprovada | 2026-06-29 |       |
-| 8 — `--full`       | ⬜ pendente |      |       |
+| 8 — `--full`       | ✅ aprovada | 2026-06-29 |       |
 | 9 — `--show`       | ⬜ pendente |      |       |
 | 10 — Robustez      | ⬜ pendente |      |       |
 
