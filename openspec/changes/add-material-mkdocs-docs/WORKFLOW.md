@@ -34,7 +34,7 @@ Maintainer revisa (mkdocs serve, leitura, testes)
 | 2 — CLI Reference | [phase-02-cli-reference.md](roadmap/phase-02-cli-reference.md) | approved |
 | 3 — Output Examples | [phase-03-output-examples.md](roadmap/phase-03-output-examples.md) | `3df91e1` |
 | 4 — Claude Code | [phase-04-claude-code.md](roadmap/phase-04-claude-code.md) | `3df91e1` |
-| 5 — Publish | [phase-05-publish.md](roadmap/phase-05-publish.md) | pendente revisão |
+| 5 — Publish | [phase-05-publish.md](roadmap/phase-05-publish.md) | `c3e9beb` |
 
 Atualizar a coluna **Commit** quando o maintainer aprovar e o commit for feito.
 
