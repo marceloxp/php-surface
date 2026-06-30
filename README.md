@@ -1,82 +1,30 @@
 # php-surface
 
-Structural explorer for PHP source files. Outputs a compact map of classes, traits and interfaces for incremental exploration.
+Structural explorer for PHP source files. Outputs a compact map of classes, traits, and interfaces for incremental exploration.
+
+**Documentation → [marceloxp.github.io/php-surface](https://marceloxp.github.io/php-surface/)**
 
 ## Requirements
 
 - PHP 8.3+
+- [Composer](https://getcomposer.org/)
 
 ## Install
 
 ```bash
+git clone https://github.com/marceloxp/php-surface.git
+cd php-surface
 composer install
-```
-
-## Add `bin` to your PATH
-
-```bash
-# Current shell session (replace with your clone path)
 export PATH="/path/to/php-surface/bin:$PATH"
 ```
 
-To make it permanent, add the same line to `~/.bashrc`, `~/.zshrc`, or your shell profile.
-
-Without modifying `PATH`, invoke the wrapper by full path:
+## Example
 
 ```bash
-/path/to/php-surface/bin/php-surface --version
+php-surface /absolute/path/to/File.php --stats --text
 ```
 
-## Usage
-
-Pass the **full (absolute) path** to the `.php` file you want to analyze:
-
-```bash
-php-surface /absolute/path/to/File.php
-php-surface /absolute/path/to/File.php --help
-php-surface /absolute/path/to/File.php --text
-php-surface /absolute/path/to/File.php --filter save
-php-surface /absolute/path/to/File.php --search nested
-php-surface /absolute/path/to/File.php --visibility public
-php-surface /absolute/path/to/File.php --full
-php-surface /absolute/path/to/File.php --show ClassName::method
-php-surface /absolute/path/to/File.php --stats
-```
-
-## Runtime PHP
-
-By default, `bin/php-surface` uses the first compatible PHP 8.3+ binary in your `PATH`.
-
-Override with:
-
-```bash
-PHP_SURFACE_BIN_PATH=/usr/bin/php8.3 php-surface /absolute/path/to/File.php
-```
-
-## Output size guard
-
-Default map output is capped at **8 KB** to keep AI context lean. When the rendered output exceeds the limit, the tool exits with code `3` and prints guidance on stderr (JSON or text, matching `--text`).
-
-Override the limit:
-
-```bash
-PHP_SURFACE_MAX_OUTPUT_BYTES=32000 php-surface /absolute/path/to/Large.php
-```
-
-Or bypass the guard explicitly:
-
-```bash
-php-surface /absolute/path/to/Large.php --allow-large-output
-```
-
-## Exit codes
-
-| Code | Meaning                                                                                    |
-| ---- | ------------------------------------------------------------------------------------------ |
-| `0`  | Success                                                                                    |
-| `1`  | Usage error (missing argument, invalid flag, symbol not found)                             |
-| `2`  | File error (missing file, invalid extension, parse error)                                  |
-| `3`  | Output too large (use `--stats`, `--search`, filters, `--show`, or `--allow-large-output`) |
+Default output is JSON. Use `--text` for a human-readable map. Always pass the **full path** to the `.php` file.
 
 ## Tests
 
@@ -84,14 +32,4 @@ php-surface /absolute/path/to/Large.php --allow-large-output
 composer test
 ```
 
-Or directly:
-
-```bash
-./vendor/bin/pest
-```
-
-CLI output is covered by snapshot tests in `tests/Feature/CliSnapshotTest.php`. Golden files live under `tests/.pest/snapshots/`. After intentional output changes, refresh them with:
-
-```bash
-./vendor/bin/pest --update-snapshots
-```
+Full CLI reference, output examples, exit codes, and Claude Code integration are in the [documentation site](https://marceloxp.github.io/php-surface/).

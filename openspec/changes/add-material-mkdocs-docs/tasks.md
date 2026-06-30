@@ -45,10 +45,10 @@ Checklist mestre. Detalhes e critérios de aceite por fase estão em `roadmap/ph
 
 ## Fase 5 — Publicação
 
-- [ ] 5.1 Criar workflow GitHub Actions (build + deploy-pages)
-- [ ] 5.2 Entregar instruções passo a passo para configurar GitHub Pages (Settings → GitHub Actions)
-- [ ] 5.3 Atualizar README com link para o site (English)
-- [ ] 5.4 Verificar `site_url` e links internos
+- [x] 5.1 Criar workflow GitHub Actions (build + deploy-pages)
+- [x] 5.2 Entregar instruções passo a passo para configurar GitHub Pages (Settings → GitHub Actions)
+- [x] 5.3 Atualizar README com link para o site (English)
+- [x] 5.4 Verificar `site_url` e links internos
 - [ ] 5.5 Smoke test do site publicado (com maintainer)
 
 → [roadmap/phase-05-publish.md](roadmap/phase-05-publish.md)
