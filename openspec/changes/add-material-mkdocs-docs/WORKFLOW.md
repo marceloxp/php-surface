@@ -30,8 +30,8 @@ Maintainer revisa (mkdocs serve, leitura, testes)
 
 | Fase | Arquivo | Commit |
 |------|---------|--------|
-| 1 — Scaffold | [phase-01-scaffold.md](roadmap/phase-01-scaffold.md) | após OK do maintainer |
-| 2 — CLI Reference | [phase-02-cli-reference.md](roadmap/phase-02-cli-reference.md) | pendente revisão |
+| 1 — Scaffold | [phase-01-scaffold.md](roadmap/phase-01-scaffold.md) | `3b15965` |
+| 2 — CLI Reference | [phase-02-cli-reference.md](roadmap/phase-02-cli-reference.md) | approved |
 | 3 — Output Examples | [phase-03-output-examples.md](roadmap/phase-03-output-examples.md) | — |
 | 4 — Claude Code | [phase-04-claude-code.md](roadmap/phase-04-claude-code.md) | — |
 | 5 — Publish | [phase-05-publish.md](roadmap/phase-05-publish.md) | — |

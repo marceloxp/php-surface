@@ -15,11 +15,11 @@ Checklist mestre. Detalhes e critérios de aceite por fase estão em `roadmap/ph
 
 ## Fase 2 — Referência CLI
 
-- [ ] 2.1 Criar `docs/cli/reference.md` com sintaxe, flags e env vars
-- [ ] 2.2 Criar `docs/cli/exit-codes.md`
-- [ ] 2.3 Documentar fluxo incremental de exploração (`--stats` → `--filter` → `--show`)
-- [ ] 2.4 Documentar output size guard e `--allow-large-output`
-- [ ] 2.5 Cross-check com `Application.php::printHelp()`
+- [x] 2.1 Criar `docs/cli/reference.md` com sintaxe, flags e env vars
+- [x] 2.2 Criar `docs/cli/exit-codes.md`
+- [x] 2.3 Documentar fluxo incremental de exploração (`--stats` → `--filter` → `--show`)
+- [x] 2.4 Documentar output size guard e `--allow-large-output`
+- [x] 2.5 Cross-check com `Application.php::printHelp()`
 
 → [roadmap/phase-02-cli-reference.md](roadmap/phase-02-cli-reference.md)
 

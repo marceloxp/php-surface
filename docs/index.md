@@ -45,4 +45,5 @@ Default output is JSON. Use `--text` for human-readable maps like the one above.
 
 - [Install php-surface](getting-started/installation.md) — PHP 8.3+ and Composer
 - [Quick Start](getting-started/quickstart.md) — first commands and exploration workflow
-- [CLI Reference](cli/reference.md) — full flag reference *(coming in Phase 2)*
+- [CLI Reference](cli/reference.md) — full flag reference
+- [Exit codes](cli/exit-codes.md) — meaning of each exit code
