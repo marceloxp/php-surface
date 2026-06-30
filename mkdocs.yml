@@ -65,4 +65,4 @@ nav:
     - Exit Codes: cli/exit-codes.md
     - Output Examples: cli/examples.md
   - Integrations:
-    - Claude Code: integrations/claude-code.md
+    - AI agents: integrations/ai-agents.md

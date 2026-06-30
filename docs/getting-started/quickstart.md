@@ -62,7 +62,7 @@ php-surface --version
 
 ## What's next
 
-- [Installation](installation.md) — add `bin` to your `PATH`
+- [Installation](installation.md) — PATH, symlink, or full-path setup
 - [Commands reference](../cli/reference.md) — all flags and options
 - [Output examples](../cli/examples.md) — sample JSON and text output
 - [Exit codes](../cli/exit-codes.md) — meaning of each exit code

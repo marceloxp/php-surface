@@ -48,4 +48,4 @@ Default output is JSON. Use `--text` for human-readable maps like the one above.
 - [CLI Reference](cli/reference.md) — full flag reference
 - [Output Examples](cli/examples.md) — commands with real JSON and `--text` output
 - [Exit codes](cli/exit-codes.md) — meaning of each exit code
-- [Claude Code](integrations/claude-code.md) — install php-surface for AI agents
+- [AI agents](integrations/ai-agents.md) — global install and agent rules for Cursor, Claude Code, and similar tools

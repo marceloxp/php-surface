@@ -19,28 +19,43 @@ Verify the CLI:
 ./bin/php-surface --version
 ```
 
-## Add `bin` to your PATH
+## Make `php-surface` invocable from anywhere
 
-To invoke `php-surface` from any directory without typing the full path to the wrapper:
+Pick one approach below (replace `/path/to/php-surface` with your clone path).
+
+### Add `bin` to your PATH (recommended)
 
 ```bash
-# Current shell session (replace with your clone path)
+# Current shell session
 export PATH="/path/to/php-surface/bin:$PATH"
 php-surface --version
 ```
 
 To make it permanent, add the same `export` line to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.), then reload the shell.
 
-After adding to `PATH`, you can run:
+### Symlink into a directory already on PATH
+
+If a directory such as `~/.local/bin` is already on your `PATH` (common in IDE agent shells), you can symlink the wrapper once:
 
 ```bash
-php-surface /absolute/path/to/File.php
+ln -sf /path/to/php-surface/bin/php-surface ~/.local/bin/php-surface
+php-surface --version
 ```
 
-If you prefer not to modify `PATH`, use the wrapper directly with a full path:
+The wrapper resolves symlinks to the real script, so the project root is found correctly regardless of where the symlink lives.
+
+### Full path (no PATH change)
 
 ```bash
 /path/to/php-surface/bin/php-surface /absolute/path/to/File.php
+```
+
+### After setup
+
+Once `php-surface` is on your `PATH` (via export or symlink), run:
+
+```bash
+php-surface /absolute/path/to/File.php
 ```
 
 ## File path argument

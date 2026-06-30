@@ -1,6 +1,6 @@
 # Output Examples
 
-Real command invocations and stdout/stderr samples. Examples use fixtures from `tests/fixtures/` in your clone — invoke `php-surface` with **absolute paths** after [adding `bin` to your PATH](../getting-started/installation.md#add-bin-to-your-path) (replace `/path/to/php-surface` with your clone location).
+Real command invocations and stdout/stderr samples. Examples use fixtures from `tests/fixtures/` in your clone — invoke `php-surface` with **absolute paths** after [making the CLI invocable](../getting-started/installation.md#make-php-surface-invocable-from-anywhere) (replace `/path/to/php-surface` with your clone location).
 
 Sample stdout below matches snapshot tests (relative `file` paths in JSON). When you pass an absolute path, the `file` field and the first line of `--text` output echo the path you supplied.
 

@@ -32,4 +32,4 @@ Default output is JSON. Use `--text` for a human-readable map. Always pass the *
 composer test
 ```
 
-Full CLI reference, output examples, exit codes, and Claude Code integration are in the [documentation site](https://marceloxp.github.io/php-surface/).
+Full CLI reference, output examples, exit codes, and AI agent integration are in the [documentation site](https://marceloxp.github.io/php-surface/).
