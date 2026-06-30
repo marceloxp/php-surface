@@ -1,0 +1,28 @@
+schema: spec-driven
+
+context: |
+  Project: php-surface — structural explorer for PHP source files (PHP 8.3+).
+  Repository: https://github.com/marceloxp/php-surface
+  Documentation stack: MkDocs + Material for MkDocs (Python).
+  Documentation is the official project site (GitHub Pages).
+  All site content under docs/ MUST be written in English only.
+  Roadmap files and agent conversations with the maintainer may be pt-BR.
+  No doc versioning (mike), no i18n, no PHP API auto-generation plugins.
+  Deploy exclusively via GitHub Actions (not manual mkdocs gh-deploy).
+  CLI output examples MUST match snapshot tests in tests/.pest/snapshots/.
+  Canonical CLI help lives in src/Cli/Application.php::printHelp().
+
+rules:
+  workflow:
+    - See openspec/changes/add-material-mkdocs-docs/WORKFLOW.md
+    - Agent implements a phase; maintainer reviews; commit only after explicit OK; then next phase
+  proposal:
+    - Link each capability to a roadmap phase file
+    - Keep docs-site scope separate from CLI product scope
+  specs:
+    - Use WHEN/THEN format for scenarios
+    - Reference real flags and exit codes from the CLI
+  design:
+    - Prefer mkdocs-material features (tabs, admonitions, code copy)
+  tasks:
+    - One checkbox group per roadmap phase

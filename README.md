@@ -12,18 +12,35 @@ Structural explorer for PHP source files. Outputs a compact map of classes, trai
 composer install
 ```
 
-## Usage
+## Add `bin` to your PATH
 
 ```bash
-./bin/php-surface path/to/File.php
-./bin/php-surface path/to/File.php --help
-./bin/php-surface path/to/File.php --text
-./bin/php-surface path/to/File.php --filter save
-./bin/php-surface path/to/File.php --search nested
-./bin/php-surface path/to/File.php --visibility public
-./bin/php-surface path/to/File.php --full
-./bin/php-surface path/to/File.php --show ClassName::method
-./bin/php-surface path/to/File.php --stats
+# Current shell session (replace with your clone path)
+export PATH="/path/to/php-surface/bin:$PATH"
+```
+
+To make it permanent, add the same line to `~/.bashrc`, `~/.zshrc`, or your shell profile.
+
+Without modifying `PATH`, invoke the wrapper by full path:
+
+```bash
+/path/to/php-surface/bin/php-surface --version
+```
+
+## Usage
+
+Pass the **full (absolute) path** to the `.php` file you want to analyze:
+
+```bash
+php-surface /absolute/path/to/File.php
+php-surface /absolute/path/to/File.php --help
+php-surface /absolute/path/to/File.php --text
+php-surface /absolute/path/to/File.php --filter save
+php-surface /absolute/path/to/File.php --search nested
+php-surface /absolute/path/to/File.php --visibility public
+php-surface /absolute/path/to/File.php --full
+php-surface /absolute/path/to/File.php --show ClassName::method
+php-surface /absolute/path/to/File.php --stats
 ```
 
 ## Runtime PHP
@@ -33,7 +50,7 @@ By default, `bin/php-surface` uses the first compatible PHP 8.3+ binary in your 
 Override with:
 
 ```bash
-PHP_SURFACE_BIN_PATH=/usr/bin/php8.3 ./bin/php-surface File.php
+PHP_SURFACE_BIN_PATH=/usr/bin/php8.3 php-surface /absolute/path/to/File.php
 ```
 
 ## Output size guard
@@ -43,13 +60,13 @@ Default map output is capped at **8 KB** to keep AI context lean. When the rende
 Override the limit:
 
 ```bash
-PHP_SURFACE_MAX_OUTPUT_BYTES=32000 ./bin/php-surface Large.php
+PHP_SURFACE_MAX_OUTPUT_BYTES=32000 php-surface /absolute/path/to/Large.php
 ```
 
 Or bypass the guard explicitly:
 
 ```bash
-./bin/php-surface Large.php --allow-large-output
+php-surface /absolute/path/to/Large.php --allow-large-output
 ```
 
 ## Exit codes
