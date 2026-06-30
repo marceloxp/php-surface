@@ -18,7 +18,7 @@ The analyzed code is **never executed**. Everything comes from static parsing.
 ## Quick example
 
 ```bash
-./bin/php-surface /path/to/php-surface/tests/fixtures/Methods.php --text
+php-surface /path/to/php-surface/tests/fixtures/Methods.php --text
 ```
 
 ```text
@@ -46,4 +46,6 @@ Default output is JSON. Use `--text` for human-readable maps like the one above.
 - [Install php-surface](getting-started/installation.md) — PHP 8.3+ and Composer
 - [Quick Start](getting-started/quickstart.md) — first commands and exploration workflow
 - [CLI Reference](cli/reference.md) — full flag reference
+- [Output Examples](cli/examples.md) — commands with real JSON and `--text` output
 - [Exit codes](cli/exit-codes.md) — meaning of each exit code
+- [Claude Code](integrations/claude-code.md) — install php-surface for AI agents

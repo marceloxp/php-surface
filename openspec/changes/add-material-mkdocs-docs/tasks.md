@@ -25,21 +25,21 @@ Checklist mestre. Detalhes e critérios de aceite por fase estão em `roadmap/ph
 
 ## Fase 3 — Exemplos de saída
 
-- [ ] 3.1 Criar `docs/cli/examples.md`
-- [ ] 3.2 Adicionar exemplos default map (JSON + `--text`)
-- [ ] 3.3 Adicionar exemplos `--filter`, `--visibility`, `--search`, `--show`, `--stats`, `--full`
-- [ ] 3.4 Usar content tabs JSON / text
-- [ ] 3.5 Validar contra snapshots
+- [x] 3.1 Criar `docs/cli/examples.md`
+- [x] 3.2 Adicionar exemplos default map (JSON + `--text`)
+- [x] 3.3 Adicionar exemplos `--filter`, `--visibility`, `--show`, `--stats`, `--full` (sem `--search` — aguarda snapshots dedicados)
+- [x] 3.4 Usar content tabs JSON / text
+- [x] 3.5 Validar contra snapshots
 
 → [roadmap/phase-03-output-examples.md](roadmap/phase-03-output-examples.md)
 
 ## Fase 4 — Claude Code
 
-- [ ] 4.1 Criar `docs/integrations/claude-code.md`
-- [ ] 4.2 Documentar instalação no projeto
-- [ ] 4.3 Documentar snippet CLAUDE.md recomendado
-- [ ] 4.4 Documentar workflow incremental para agentes
-- [ ] 4.5 Documentar variáveis de ambiente e troubleshooting
+- [x] 4.1 Criar `docs/integrations/claude-code.md`
+- [x] 4.2 Documentar instalação no projeto
+- [x] 4.3 Documentar snippet CLAUDE.md recomendado
+- [x] 4.4 Documentar workflow incremental para agentes
+- [x] 4.5 Documentar variáveis de ambiente e troubleshooting
 
 → [roadmap/phase-04-claude-code.md](roadmap/phase-04-claude-code.md)
 

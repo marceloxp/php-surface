@@ -91,7 +91,7 @@ Opcional (fase futura): script que extrai snapshots para `docs/includes/` — **
 - [ ] Mínimo 8 cenários documentados (tabela acima)
 - [ ] Saídas JSON batem com snapshots (diff manual ou script)
 - [ ] Tabs JSON/text renderizam no Material
-- [ ] Comandos usam `./bin/php-surface` (path relativo ao repo)
+- [ ] Comandos usam `php-surface` no PATH com caminhos absolutos (ver [installation.md](../../../docs/getting-started/installation.md))
 - [ ] Seção exit 3 com exemplo stderr
 
 ---

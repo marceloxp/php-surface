@@ -32,8 +32,8 @@ Maintainer revisa (mkdocs serve, leitura, testes)
 |------|---------|--------|
 | 1 — Scaffold | [phase-01-scaffold.md](roadmap/phase-01-scaffold.md) | `3b15965` |
 | 2 — CLI Reference | [phase-02-cli-reference.md](roadmap/phase-02-cli-reference.md) | approved |
-| 3 — Output Examples | [phase-03-output-examples.md](roadmap/phase-03-output-examples.md) | — |
-| 4 — Claude Code | [phase-04-claude-code.md](roadmap/phase-04-claude-code.md) | — |
+| 3 — Output Examples | [phase-03-output-examples.md](roadmap/phase-03-output-examples.md) | pendente revisão |
+| 4 — Claude Code | [phase-04-claude-code.md](roadmap/phase-04-claude-code.md) | pendente revisão |
 | 5 — Publish | [phase-05-publish.md](roadmap/phase-05-publish.md) | — |
 
 Atualizar a coluna **Commit** quando o maintainer aprovar e o commit for feito.
